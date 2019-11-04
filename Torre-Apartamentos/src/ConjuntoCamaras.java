@@ -1,36 +1,36 @@
 import java.util.ArrayList;
 
-public class ConjuntoCamaras implements Camaras {
+public class ConjuntoCamaras implements ComponenteCamara {
 	
-	private ArrayList<Camara> camaras;
+	private ArrayList<CamaraSeguridad> camaras;
 
 	@Override
-	public void agregar(Camara camara) {
+	public void agregar(CamaraSeguridad camara) {
 		this.camaras.add(camara);
 	}
 
 	@Override
-	public void eliminar(Camara camara) {
+	public void eliminar(CamaraSeguridad camara) {
 		this.camaras.remove(camara);
 	}
 	
 	@Override
 	public void rotarDerecha() {
-		for (Camara camara : camaras) {
+		for (CamaraSeguridad camara : camaras) {
 			camara.rotarDerecha();
 		}
 	}
 
 	@Override
 	public void rotarIzquierda() {
-		for (Camara camara : camaras) {
+		for (CamaraSeguridad camara : camaras) {
 			camara.rotarIzquierda();
 		}
 	}
 
 	@Override
 	public void centrar() {
-		for (Camara camara : camaras) {
+		for (CamaraSeguridad camara : camaras) {
 			camara.centrar();
 		}
 	}

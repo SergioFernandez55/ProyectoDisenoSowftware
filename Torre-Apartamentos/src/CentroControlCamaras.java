@@ -2,24 +2,24 @@ import java.util.ArrayList;
 
 public class CentroControlCamaras {
 	
-	private static final String ERROR_RECONOCIMIENTO = "Ninguna camara reconoce a la persona con cédula: ";
-	private ArrayList<Camara> camaras = new ArrayList<>();
-	private Camaras seleccion;
+	private static final String ERROR_RECONOCIMIENTO = "Ninguna camara reconoce a la persona con cï¿½dula: ";
+	private ArrayList<CamaraSeguridad> camaras = new ArrayList<>();
+	private ComponenteCamara seleccion;
 	
 	public void seleccionarUnicaCamara(int id){
-		this.seleccion = new Camara();
+		this.seleccion = new CamaraSeguridad();
 	}
 	
 	public void crearSeleccionMultiple(){
 		this.seleccion = new ConjuntoCamaras();
 	}
 	
-	public void agregarCamaraSeleccion(Camara camara){
+	public void agregarCamaraSeleccion(CamaraSeguridad camara){
 		seleccion.agregar(camara);
 	}
 	
 	public String reconocePersona(String cedula){
-		for (Camara camara : this.camaras) {
+		for (CamaraSeguridad camara : this.camaras) {
 			if(camara.reconocePersona(cedula)){
 				return Integer.toString(camara.getIdentificador());
 			}
@@ -29,7 +29,7 @@ public class CentroControlCamaras {
 	
 	public ArrayList<String> cedulasReconocidas(int id){
 		
-		for (Camara camara : camaras) {
+		for (CamaraSeguridad camara : camaras) {
 			if(camara.getIdentificador() == id){
 				return camara.cedulasReconocidas();
 			}
