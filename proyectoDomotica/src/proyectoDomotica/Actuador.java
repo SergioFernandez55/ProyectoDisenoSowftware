@@ -12,7 +12,6 @@ public abstract class Actuador implements DispositivoInteligente{
 	public final boolean activaDispositivo() {
 		activo = true;
 		accion();
-		System.out.println("actuador");
 		return mediador.llamarComportamiento(this);
 	}
 	

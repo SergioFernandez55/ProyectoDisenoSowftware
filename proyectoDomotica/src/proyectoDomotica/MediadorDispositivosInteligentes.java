@@ -8,10 +8,20 @@ public class MediadorDispositivosInteligentes {
 	
 	ArrayList<Comportamiento> comportamientos = new ArrayList();
 	
+	
+	
 	ActuadorLampara lampara = new ActuadorLampara(this);
 	ActuadorAireAcondicionado aireAcondicionado = new ActuadorAireAcondicionado(this);
 	ActuadorAspersores aspersores = new ActuadorAspersores(this);
 
+	public ArrayList<DispositivoInteligente> getDispositivos(){
+		return dispositivos;
+	}
+	
+	public ArrayList<Comportamiento> getComportamientos(){
+		return comportamientos;
+	}
+	
 	public void agregarDispositivo(DispositivoInteligente dispositivo) {
 		dispositivos.add(dispositivo);
 	}

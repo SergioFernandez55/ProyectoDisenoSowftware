@@ -10,7 +10,6 @@ public abstract class Sensor implements DispositivoInteligente{
 	
 	public boolean activaDispositivo() {
 		activo = true;
-		System.out.println("sensor");
 		return mediador.llamarComportamiento(this);
 	}
 	
