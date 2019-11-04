@@ -8,7 +8,7 @@ public class SistemaIntegradoSeguridad implements Serializable {
 	private SistemaAccesos sistemaAccesos = new SistemaAccesosTorre();
 	private Registro registroEntrada = new RegistroEntrada();
 	private Registro registroSalida = new RegistroSalida();
-	private DecoradorSistemaAccesosTorre decoradorSistemaAccesos; // ¿Cómo hacer que decore ambos tipos de registro?
+	private DecoradorSistemaAccesosTorre decoradorSistemaAccesos; // CÃ³mo hacer que decore ambos tipos de registro?
 	
 	private SistemaIntegradoSeguridad(){	
 	}
