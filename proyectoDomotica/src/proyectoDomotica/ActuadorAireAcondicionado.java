@@ -1,10 +1,15 @@
 package proyectoDomotica;
 
-public class ActuadorAireAcondicionado {
+public class ActuadorAireAcondicionado extends Actuador{
 	
-	public boolean activa() {
+	
+	public ActuadorAireAcondicionado(MediadorDispositivosInteligentes mediador) {
+		super(mediador);
+		// TODO Auto-generated constructor stub
+	}
+
+	public void accion() {
 		System.out.println("Enfria");		
-		return true;
 	}
 	
 }

@@ -1,11 +1,15 @@
 package proyectoDomotica;
 
-public class ActuadorAspersores {
+public class ActuadorAspersores extends Actuador{
 
 
-	public boolean activa() {
+	public ActuadorAspersores(MediadorDispositivosInteligentes mediador) {
+		super(mediador);
+		// TODO Auto-generated constructor stub
+	}
+
+	public void accion() {
 		System.out.println("Tiro agua");	
-		return true;
 	}
 
 }

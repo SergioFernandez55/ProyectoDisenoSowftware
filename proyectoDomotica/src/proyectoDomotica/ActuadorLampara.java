@@ -1,10 +1,14 @@
 package proyectoDomotica;
 
-public class ActuadorLampara {
+public class ActuadorLampara extends Actuador{
 
-	public boolean activa() {
+	public ActuadorLampara(MediadorDispositivosInteligentes mediador) {
+		super(mediador);
+		// TODO Auto-generated constructor stub
+	}
+
+	public void accion() {
 		System.out.println("Encendida");
-		return true;
 	}
 
 }

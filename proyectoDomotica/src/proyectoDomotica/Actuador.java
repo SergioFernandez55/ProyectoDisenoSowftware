@@ -1,8 +1,30 @@
 package proyectoDomotica;
 
-public abstract class Actuador {
+public abstract class Actuador implements DispositivoInteligente{
 
-	abstract boolean activa();	
+	MediadorDispositivosInteligentes mediador;
+	boolean activo;
+
+	public Actuador(MediadorDispositivosInteligentes mediador) {
+		this.mediador = mediador;
+	}
 	
+	public final boolean activaDispositivo() {
+		activo = true;
+		accion();
+		System.out.println("actuador");
+		return mediador.llamarComportamiento(this);
+	}
+	
+	public boolean desactivaDispositivo() {
+		activo = false;
+		return mediador.llamarComportamiento(this);
+	}
+	
+	abstract void accion();
+
+	void setMediador(MediadorDispositivosInteligentes mediador) {
+		this.mediador = mediador;
+	}
 	
 }

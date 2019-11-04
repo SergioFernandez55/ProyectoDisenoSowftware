@@ -3,24 +3,35 @@ import java.util.ArrayList;
 
 
 public class MediadorDispositivosInteligentes {
-
-	ActuadorLampara lampara = new ActuadorLampara();
-	ActuadorAireAcondicionado aireAcondicionado = new ActuadorAireAcondicionado();
-	ActuadorAspersores aspersores = new ActuadorAspersores();
 	
-	public boolean ActivaLampara() {
-		return lampara.activa();
-	}
+	ArrayList<DispositivoInteligente> dispositivos = new ArrayList();
+	
+	ArrayList<Comportamiento> comportamientos = new ArrayList();
+	
+	ActuadorLampara lampara = new ActuadorLampara(this);
+	ActuadorAireAcondicionado aireAcondicionado = new ActuadorAireAcondicionado(this);
+	ActuadorAspersores aspersores = new ActuadorAspersores(this);
 
-	public boolean ActivaAire() {
-		return aireAcondicionado.activa();
+	public void agregarDispositivo(DispositivoInteligente dispositivo) {
+		dispositivos.add(dispositivo);
 	}
 	
-	public boolean ActivaAspersor() {
-		return aspersores.activa();
+	
+	public void agregaComportamiento(DispositivoInteligente emisor, Actuador receptor, boolean activar) {
+		if(dispositivos.contains(emisor) && dispositivos.contains(receptor)) {
+			Comportamiento comportamiento = new Comportamiento(this);
+			comportamiento.setComportamiento(emisor, receptor, activar);
+			comportamientos.add(comportamiento);
+		}
 	}
-
-	public boolean activaActuador(Actuador actuador) {
-		return actuador.activa();
+	
+	public boolean llamarComportamiento(DispositivoInteligente dispositivo) {
+		for (int i=0; i<comportamientos.size(); ++i) {
+			if (comportamientos.get(i).getEmisor() == dispositivo) {
+				System.out.println("mediador");
+				comportamientos.get(i).llamarComportamiento(dispositivo, this);
+			}
+		}
+		return true;
 	}
 }
