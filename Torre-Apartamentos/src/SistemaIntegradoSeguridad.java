@@ -26,4 +26,14 @@ public class SistemaIntegradoSeguridad implements Serializable {
 	public void guardarSalida(){
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
