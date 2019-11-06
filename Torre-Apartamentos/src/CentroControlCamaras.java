@@ -11,7 +11,7 @@ public class CentroControlCamaras {
 	}
 	
 	public void crearSeleccionMultiple(){
-		this.seleccion = new ConjuntoCamaras();
+		this.seleccion = new ComposicionCamaras();
 	}
 	
 	public void agregarCamaraSeleccion(CamaraSeguridad camara){

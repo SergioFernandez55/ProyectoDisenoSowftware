@@ -7,11 +7,12 @@ public class CamaraSeguridad implements ComponenteCamara {
 	private String posicion;
 	private int identificador;
 	
+	
 	@Override
-	public void agregar(CamaraSeguridad camara) {}
+	public void agregar(ComponenteCamara camara) {}
 
 	@Override
-	public void eliminar(CamaraSeguridad camara) {}
+	public void eliminar(ComponenteCamara camara) {}
 	
 	@Override
 	public void rotarDerecha() {
@@ -49,5 +50,4 @@ public class CamaraSeguridad implements ComponenteCamara {
 	public int getIdentificador(){
 		return this.identificador;
 	}
-	
 }
