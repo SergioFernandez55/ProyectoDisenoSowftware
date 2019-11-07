@@ -23,7 +23,8 @@ public class MediadorDispositivosInteligentes {
 	}
 	
 	public void agregarDispositivo(DispositivoInteligente dispositivo) {
-		dispositivos.add(dispositivo);
+		//System.out.println((Actuador)dispositivo);
+		//dispositivos.add(dispositivo);
 	}
 	
 	

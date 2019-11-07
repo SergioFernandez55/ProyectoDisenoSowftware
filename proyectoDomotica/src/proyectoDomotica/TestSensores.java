@@ -17,31 +17,45 @@ public class TestSensores {
 		ArrayList<Actuador> actuadores = new ArrayList();
 		ArrayList<Comportamiento> comportamientos = new ArrayList();
 		
+		DomoticaFacade facade = new DomoticaFacade();
+		facade.setMediador(mediador);
+		
+		Actuador lampara  = new ActuadorLampara(mediador);
+		Actuador aire = new ActuadorAireAcondicionado(mediador);
+		Actuador aspersor = new ActuadorAspersores(mediador);
 		
 		/*Cargamos lista actuadores*/
-		/*actuadores.add(new ActuadorLampara(mediador));
-		actuadores.add(new ActuadorAireAcondicionado(mediador));
-		actuadores.add(new ActuadorAspersores(mediador));*/
+		actuadores.add(lampara);
+		actuadores.add(aire);
+		actuadores.add(aspersor);
+		
+					
+		facade.agregarActuador(actuadores);
 		
 		mediador.getDispositivos().add(new ActuadorLampara(mediador));
 		mediador.getDispositivos().add(new ActuadorAireAcondicionado(mediador));
 		mediador.getDispositivos().add(new ActuadorAspersores(mediador));
 		
 		
+		Sensor mov = new SensorMovimiento(mediador);
+		
 		/*Cargamos lista Sensores*/
-		/*sensores.add(new SensorMovimiento(mediador));
+		sensores.add(mov);
 		sensores.add(new SensorHumo(mediador));
-		sensores.add(new SensorTemperatura(mediador));*/
+		sensores.add(new SensorTemperatura(mediador));
+		facade.agregarSensor(sensores);
 		
 		mediador.getDispositivos().add(new SensorMovimiento(mediador));
 		mediador.getDispositivos().add(new SensorHumo(mediador));
 		mediador.getDispositivos().add(new SensorTemperatura(mediador));
 
-		mediador.getComportamientos().add(new Comportamiento(sensores.get(0), actuadores.get(0), true));
-		mediador.getComportamientos().add(new Comportamiento(actuadores.get(0), actuadores.get(2),true));
-		mediador.comportamientos = comportamientos;
+		comportamientos.add(new Comportamiento(mov, lampara, true));
+		comportamientos.add(new Comportamiento(lampara, aire,true));
+		facade.agregarComportamiento(comportamientos);
+		//mediador.comportamientos = comportamientos;
 
-		sensores.get(0).activaDispositivo();
-		assert(actuadores.get(2).activo == true);
+		//sensores.get(0).activaDispositivo();
+		lampara.activaDispositivo();
+		assertEquals(aire.estaActivo() ,true);
 	}
 }
