@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class SistemaIntegradoSeguridad implements Serializable, SistemaSeguridad {
@@ -106,4 +107,32 @@ public class SistemaIntegradoSeguridad implements Serializable, SistemaSeguridad
 		}
 	}
 
+	@Override
+	public boolean reconocePersona(String cedula) {
+		
+		String resultado = this.centroControlCamaras.reconocePersona(cedula);
+		
+		if(resultado.equals("Ninguna camara reconoce a la persona con cedula: " + cedula)) {
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public void registrarClienteEnCamara(int numeroCamara, String cedula) {
+		
+		if(this.centroControlCamaras.existeCamara(numeroCamara)) {
+			this.centroControlCamaras.registrarClienteEnCamara(numeroCamara, cedula);
+		}
+	}
+
+	@Override
+	public void registrarClientesEnCamara(int numeroCamara, String... cedulasClientes) {
+		
+		if(this.centroControlCamaras.existeCamara(numeroCamara)) {
+			for (String cedula : cedulasClientes) {
+				this.centroControlCamaras.registrarClienteEnCamara(numeroCamara, cedula);
+			}
+		}
+	}
 }

@@ -1,11 +1,15 @@
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import org.junit.Before;
 import org.junit.Test;
 
 public class TestSistemaSeguridad {
 
-	final int CANTIDAD_CAMARAS = 10;
+	final int CANTIDAD_CAMARAS = 5;
+	
 	// --- Decorador del sistema de accesos ---
 	Registro registroEntrada;
 	Registro registroSalida;
@@ -41,6 +45,14 @@ public class TestSistemaSeguridad {
 		this.sistemaSeguridad.setDecoradorProxyInternet(this.decoradorAccesoInternet);
 		this.sistemaSeguridad.setCentroControlCamaras(centroControlCamaras);
 		this.sistemaSeguridad.agregarCamarasCentroControl(CANTIDAD_CAMARAS);
+	
+		
+		// Registro de un único cliente en una camara.
+		this.sistemaSeguridad.registrarClienteEnCamara(1,"999999999");
+		
+		// Registro de multiples clientes en una camara.
+		this.sistemaSeguridad.registrarClientesEnCamara(2,"111111111","222222222" ,"333333333");
+
 	}
 	
 	@Test

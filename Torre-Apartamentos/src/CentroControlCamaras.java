@@ -7,6 +7,14 @@ public class CentroControlCamaras {
 	private CamaraComponent seleccion;
 	
 	
+	public void registrarClienteEnCamara(int numeroCamara, String cedula) {
+		for (CamaraSeguridad camara : camaras) {
+			if(camara.getNumeroCamara() == numeroCamara) {
+				camara.setPersonaIdentificada(cedula);
+			}
+		}
+	}
+	
 	public void agregarCamaraASistema(CamaraSeguridad camara) {
 		this.camaras.add(camara);
 	}
@@ -62,10 +70,11 @@ public class CentroControlCamaras {
 		}	
 	}
 	
+	// NOTA: ¿Reconce persona se fija en todas la camaras del sistema o úncamente en la seleccion?
 	public String reconocePersona(String cedula){
 		for (CamaraSeguridad camara : this.camaras) {
 			if(camara.reconocePersona(cedula)){
-				return Integer.toString(camara.getNumeroCamara());
+				return "La camara: " + Integer.toString(camara.getNumeroCamara()) + ". Reconoce a la pesona con cedula: " + cedula;
 			}
 		}
 		return  ERROR_RECONOCIMIENTO + cedula;
