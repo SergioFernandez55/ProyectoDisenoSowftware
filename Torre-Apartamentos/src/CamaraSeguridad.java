@@ -5,8 +5,9 @@ public class CamaraSeguridad implements ComponenteCamara {
 	private String ubicacion;
 	private ArrayList<String> cedulas = new ArrayList<>();
 	private String posicion;
-	private int identificador;
 	
+	private static int identificador_unico = 0;
+	private int identificador = ++ identificador_unico;
 	
 	@Override
 	public void agregar(ComponenteCamara camara) {}

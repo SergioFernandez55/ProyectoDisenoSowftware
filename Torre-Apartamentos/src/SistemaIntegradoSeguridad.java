@@ -1,19 +1,17 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class SistemaIntegradoSeguridad implements Serializable {
+public class SistemaIntegradoSeguridad implements Serializable, SistemaSeguridad {
 
-	public enum Posicion {
-
-	}
-
+	private static final long serialVersionUID = 1L;
 	private static SistemaIntegradoSeguridad instancia;
 
 	private CentroControlCamaras centroControlCamaras = new CentroControlCamaras();
 	private SistemaAccesos sistemaAccesos = new SistemaAccesosTorre();
 	private Registro registroEntrada = new RegistroEntrada();
 	private Registro registroSalida = new RegistroSalida();
-	private DecoradorSistemaAccesosTorre decoradorSistemaAccesos;
+	private DecoradorSistemaAccesos decoradorSistemaAccesos;
+	private DecoradorProxyAccesoInternet decoradorProxyInternet;
 
 	private SistemaIntegradoSeguridad() {
 	}
@@ -57,20 +55,26 @@ public class SistemaIntegradoSeguridad implements Serializable {
 		centroControlCamaras.centrarCamaras();
 	}
 
+	@Override
+	public void setDecoradorProxyInternet(DecoradorProxyAccesoInternet decoradorProxyInternet) {
+		this.decoradorProxyInternet = decoradorProxyInternet;
+	}
+
+	@Override
 	public void setSistemaAccesos(SistemaAccesos sistemaAccesos) {
 		this.sistemaAccesos = sistemaAccesos;
 	}
-	
-	public void set(SistemaAccesos sistemaAccesos) {
-		this.sistemaAccesos = sistemaAccesos;
+
+	@Override
+	public void setDecoradorDeSistemaAccesos(DecoradorSistemaAccesos decoradorSistemaAccesos) {
+		this.decoradorSistemaAccesos = decoradorSistemaAccesos;
 	}
-	
-	public void set(SistemaAccesos sistemaAccesos) {
-		this.sistemaAccesos = sistemaAccesos;
-	}
-	
-	public void setSistemaAccesos(SistemaAccesos sistemaAccesos) {
-		this.sistemaAccesos = sistemaAccesos;
+
+	@Override
+	public void agregarCamarasCentroControl(int cantidadCamaras) {
+		for(int i = 1; i <= cantidadCamaras; ++i) {
+			this.centroControlCamaras.agregarCamaraASistema(new CamaraSeguridad());
+		}
 	}
 
 }

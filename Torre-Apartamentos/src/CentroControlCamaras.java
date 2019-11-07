@@ -6,6 +6,11 @@ public class CentroControlCamaras {
 	private ArrayList<CamaraSeguridad> camaras = new ArrayList<>();
 	private ComponenteCamara seleccion;
 	
+	
+	public void agregarCamaraASistema(CamaraSeguridad camara) {
+		this.camaras.add(camara);
+	}
+	
 	public CentroControlCamaras() {
 		this.seleccion = new ComposicionCamaras();
 	}
@@ -32,11 +37,15 @@ public class CentroControlCamaras {
 	}
 	
 	public void seleccionarUnicaCamara(int numeroCamara){
-		//this.seleccion = new CamaraSeguridad();
+		for (CamaraSeguridad camara : camaras) {
+			if(camara.getNumeroCamara() == numeroCamara) {
+				this.seleccion = camara;
+			}
+		}
 	}
 	
 	public void crearSeleccionMultiple(){
-		//this.seleccion = new ComposicionCamaras();
+		this.seleccion = new ComposicionCamaras();
 	}
 	
 	public  ArrayList<CamaraSeguridad> getCamaras(){
