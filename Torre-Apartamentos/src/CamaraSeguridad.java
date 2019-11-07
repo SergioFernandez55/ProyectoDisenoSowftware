@@ -38,7 +38,7 @@ public class CamaraSeguridad implements ComponenteCamara {
 	}
 	
 	// M�todo necesario para pruebas unitarias.
-	public void setIdentificador(int id) {
+	public void setNumeroCamara(int id) {
 		this.identificador = id;
 	}
 	
@@ -47,7 +47,7 @@ public class CamaraSeguridad implements ComponenteCamara {
 		this.cedulas.add(cedula);
 	}
 	
-	public int getIdentificador(){
+	public int getNumeroCamara(){
 		return this.identificador;
 	}
 }
