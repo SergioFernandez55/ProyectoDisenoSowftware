@@ -26,4 +26,8 @@ public abstract class Actuador implements DispositivoInteligente{
 		this.mediador = mediador;
 	}
 	
+	public boolean estaActivo()
+	{
+		return activo;
+	}
 }
