@@ -4,7 +4,7 @@ public class CentroControlCamaras {
 	
 	private static final String ERROR_RECONOCIMIENTO = "Ninguna camara reconoce a la persona con cedula: ";
 	private ArrayList<CamaraSeguridad> camaras = new ArrayList<>();
-	private ComponenteCamara seleccion;
+	private CamaraComponent seleccion;
 	
 	
 	public void agregarCamaraASistema(CamaraSeguridad camara) {
@@ -12,7 +12,7 @@ public class CentroControlCamaras {
 	}
 	
 	public CentroControlCamaras() {
-		this.seleccion = new ComposicionCamaras();
+		this.seleccion = new CamarasComposite();
 	}
 	
 	public boolean existeCamara(int numeroCamara) {
@@ -45,7 +45,7 @@ public class CentroControlCamaras {
 	}
 	
 	public void crearSeleccionMultiple(){
-		this.seleccion = new ComposicionCamaras();
+		this.seleccion = new CamarasComposite();
 	}
 	
 	public  ArrayList<CamaraSeguridad> getCamaras(){

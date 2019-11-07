@@ -5,6 +5,7 @@ import org.junit.Test;
 
 public class TestSistemaSeguridad {
 
+	final int CANTIDAD_CAMARAS = 10;
 	// --- Decorador del sistema de accesos ---
 	Registro registroEntrada;
 	Registro registroSalida;
@@ -17,6 +18,7 @@ public class TestSistemaSeguridad {
 	Bitacora bitacora;
 	DecoradorProxyAccesoInternet decoradorAccesoInternet;
 	
+	CentroControlCamaras centroControlCamaras;
 	SistemaIntegradoSeguridad sistemaSeguridad;
 	
 	@Before
@@ -32,14 +34,21 @@ public class TestSistemaSeguridad {
 		this.proxyAccesoInternet = new ProxyAccesoInternet(this.accesoInternet);
 		this.decoradorAccesoInternet = new DecoradorProxyAccesoInternet(this.proxyAccesoInternet, this.bitacora);
 		
+		this.centroControlCamaras = new CentroControlCamaras();
+		
 		this.sistemaSeguridad = SistemaIntegradoSeguridad.getInstancia();
 		this.sistemaSeguridad.setDecoradorDeSistemaAccesos(this.decoradorSistemaAccesos);
 		this.sistemaSeguridad.setDecoradorProxyInternet(this.decoradorAccesoInternet);
+		this.sistemaSeguridad.setCentroControlCamaras(centroControlCamaras);
+		this.sistemaSeguridad.agregarCamarasCentroControl(CANTIDAD_CAMARAS);
 	}
 	
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void validacion_sistema_identificacion_automatico() {
 	}
-
+	
+	@Test
+	public void verificacion_bloque_internet() {
+		
+	}
 }

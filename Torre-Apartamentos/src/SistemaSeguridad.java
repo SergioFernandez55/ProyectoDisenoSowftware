@@ -8,5 +8,7 @@ void centrarCamaras(ArrayList<Integer> numerosCamara);
 void setSistemaAccesos(SistemaAccesos sistemaAccesos);
 void setDecoradorDeSistemaAccesos(DecoradorSistemaAccesos decoradorSistemaAccesos);
 void setDecoradorProxyInternet(DecoradorProxyAccesoInternet decoradorProxyInternet);
+void setCentroControlCamaras(CentroControlCamaras centroControlCamaras);
 void agregarCamarasCentroControl(int cantidadCamaras);
+void revisarEstadoCamaras();
 }

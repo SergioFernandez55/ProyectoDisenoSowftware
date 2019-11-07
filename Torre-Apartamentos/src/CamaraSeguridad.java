@@ -1,33 +1,36 @@
 import java.util.ArrayList;
 
-public class CamaraSeguridad implements ComponenteCamara {
+public class CamaraSeguridad implements CamaraComponent {
 	
-	private String ubicacion;
 	private ArrayList<String> cedulas = new ArrayList<>();
-	private String posicion;
+	private String posicionCamara;
 	
 	private static int identificador_unico = 0;
 	private int identificador = ++ identificador_unico;
 	
+	public CamaraSeguridad(String posicionCamara) {
+		this.posicionCamara = posicionCamara;
+	}
+	
 	@Override
-	public void agregar(ComponenteCamara camara) {}
+	public void agregar(CamaraComponent camara) {}
 
 	@Override
-	public void eliminar(ComponenteCamara camara) {}
+	public void eliminar(CamaraComponent camara) {}
 	
 	@Override
 	public void rotarDerecha() {
-		this.posicion = "Derecha";
+		this.posicionCamara = "Derecha";
 	}
 
 	@Override
 	public void rotarIzquierda() {
-		this.posicion = "Izquierda";
+		this.posicionCamara = "Izquierda";
 	}
 
 	@Override
 	public void centrar() {
-		this.posicion = "Centro";
+		this.posicionCamara = "Centro";
 	}
 	
 	public boolean reconocePersona(String cedula) {
@@ -50,5 +53,9 @@ public class CamaraSeguridad implements ComponenteCamara {
 	
 	public int getNumeroCamara(){
 		return this.identificador;
+	}
+	
+	public String getPosicionCamara() {
+		return this.posicionCamara;
 	}
 }

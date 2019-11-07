@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class SistemaIntegradoSeguridad implements Serializable, SistemaSeguridad {
 
@@ -22,11 +23,8 @@ public class SistemaIntegradoSeguridad implements Serializable, SistemaSeguridad
 		}
 		return instancia;
 	}
-
-	public void crearCamaras(int cantidadCamaras) {
-
-	}
-
+	
+	@Override
 	public void rotarCamarasDerecha(ArrayList<Integer> numerosCamara) {
 
 		for (Integer numeroCamara : numerosCamara) {
@@ -37,6 +35,7 @@ public class SistemaIntegradoSeguridad implements Serializable, SistemaSeguridad
 		centroControlCamaras.rotarCamarasDerecha();
 	}
 
+	@Override
 	public void rotarCamarasIzquierda(ArrayList<Integer> numerosCamara) {
 		for (Integer numeroCamara : numerosCamara) {
 			if (centroControlCamaras.existeCamara(numeroCamara)) {
@@ -46,6 +45,7 @@ public class SistemaIntegradoSeguridad implements Serializable, SistemaSeguridad
 		centroControlCamaras.rotarCamarasIzquierda();
 	}
 
+	@Override
 	public void centrarCamaras(ArrayList<Integer> numerosCamara) {
 		for (Integer numeroCamara : numerosCamara) {
 			if (centroControlCamaras.existeCamara(numeroCamara)) {
@@ -73,7 +73,36 @@ public class SistemaIntegradoSeguridad implements Serializable, SistemaSeguridad
 	@Override
 	public void agregarCamarasCentroControl(int cantidadCamaras) {
 		for(int i = 1; i <= cantidadCamaras; ++i) {
-			this.centroControlCamaras.agregarCamaraASistema(new CamaraSeguridad());
+			this.centroControlCamaras.agregarCamaraASistema(new CamaraSeguridad(generarPosicionAleatoriaCamara()));
+		}
+	}
+
+	@Override
+	public void setCentroControlCamaras(CentroControlCamaras centroControlCamaras) {
+		this.centroControlCamaras = centroControlCamaras;
+	}
+
+	@Override
+	public void revisarEstadoCamaras() {
+		
+		ArrayList<CamaraSeguridad> camaras = this.centroControlCamaras.getCamaras();
+		
+		for (CamaraSeguridad camara : camaras) {
+			System.out.println(camara.getNumeroCamara() + ": " + camara.getPosicionCamara() + "\n");
+		}
+	}
+	
+	public String generarPosicionAleatoriaCamara() {
+		
+		int aleatorio = ThreadLocalRandom.current().nextInt(1, 4);
+
+		if(aleatorio == 1) {
+			return "Centro";
+		}else if(aleatorio == 2) {
+			return "Izquierda";
+		}
+		else {
+			return "Derecha";
 		}
 	}
 
