@@ -74,7 +74,7 @@ public class SistemaIntegradoSeguridad implements Serializable, SistemaSeguridad
 	@Override
 	public void agregarCamarasCentroControl(int cantidadCamaras) {
 		for(int i = 1; i <= cantidadCamaras; ++i) {
-			this.centroControlCamaras.agregarCamaraASistema(new CamaraSeguridad(generarPosicionAleatoriaCamara()));
+			this.centroControlCamaras.agregarCamaraASistema(new CamaraSeguridad(generarPosicionAleatoriaCamara(), i));
 		}
 	}
 
@@ -117,15 +117,7 @@ public class SistemaIntegradoSeguridad implements Serializable, SistemaSeguridad
 		}
 		return true;
 	}
-
-	@Override
-	public void registrarClienteEnCamara(int numeroCamara, String cedula) {
-		
-		if(this.centroControlCamaras.existeCamara(numeroCamara)) {
-			this.centroControlCamaras.registrarClienteEnCamara(numeroCamara, cedula);
-		}
-	}
-
+	
 	@Override
 	public void registrarClientesEnCamara(int numeroCamara, String... cedulasClientes) {
 		

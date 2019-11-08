@@ -45,10 +45,6 @@ public class TestSistemaSeguridad {
 		this.sistemaSeguridad.setDecoradorProxyInternet(this.decoradorAccesoInternet);
 		this.sistemaSeguridad.setCentroControlCamaras(centroControlCamaras);
 		this.sistemaSeguridad.agregarCamarasCentroControl(CANTIDAD_CAMARAS);
-	
-		
-		// Registro de un único cliente en una camara.
-		this.sistemaSeguridad.registrarClienteEnCamara(1,"999999999");
 		
 		// Registro de multiples clientes en una camara.
 		this.sistemaSeguridad.registrarClientesEnCamara(2,"111111111","222222222" ,"333333333");
@@ -57,6 +53,12 @@ public class TestSistemaSeguridad {
 	
 	@Test
 	public void validacion_sistema_identificacion_automatico() {
+		
+		this.sistemaSeguridad.revisarEstadoCamaras();
+		
+		this.sistemaSeguridad.registrarClientesEnCamara(3, "116870476");
+		assertTrue("Numero de cedula registrado en camara 3",this.sistemaSeguridad.reconocePersona("116870476"));
+		assertFalse("Numero de cedula no registrado en camara 5", this.sistemaSeguridad.reconocePersona("106580325"));
 	}
 	
 	@Test

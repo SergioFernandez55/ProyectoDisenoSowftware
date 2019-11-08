@@ -11,7 +11,6 @@ void setDecoradorProxyInternet(DecoradorProxyAccesoInternet decoradorProxyIntern
 void setCentroControlCamaras(CentroControlCamaras centroControlCamaras);
 void agregarCamarasCentroControl(int cantidadCamaras);
 void revisarEstadoCamaras();
-void registrarClienteEnCamara(int numeroCamara, String cedula);
 void registrarClientesEnCamara(int numeroCamara, String... cedulasClientes);
 boolean reconocePersona(String cedula);
 

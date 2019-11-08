@@ -4,12 +4,11 @@ public class CamaraSeguridad implements CamaraComponent {
 	
 	private ArrayList<String> cedulas = new ArrayList<>();
 	private String posicionCamara;
+	private int identificador;
 	
-	private static int identificador_unico = 0;
-	private int identificador = ++ identificador_unico;
-	
-	public CamaraSeguridad(String posicionCamara) {
+	public CamaraSeguridad(String posicionCamara, int identificador) {
 		this.posicionCamara = posicionCamara;
+		this.identificador = identificador;
 	}
 	
 	@Override
