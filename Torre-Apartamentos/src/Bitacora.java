@@ -2,7 +2,7 @@ import java.util.HashMap;
 
 public class Bitacora {
 	
-	private HashMap<String, Integer> bitacoraClientes;
+	private HashMap<String, Integer> bitacoraClientes = new HashMap<String, Integer>();
 	
 	public int actualizar(String identificadorCliente) {
 		

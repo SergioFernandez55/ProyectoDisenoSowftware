@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class ProxyAccesoInternet implements Internet{
 
-	private ArrayList<String> sitiosWebBloqueados = new ArrayList<>();
+	private ArrayList<String> sitiosWebBloqueados = new ArrayList<String>();
 	private Internet internet;
 	
 	public ProxyAccesoInternet(Internet internet) {
