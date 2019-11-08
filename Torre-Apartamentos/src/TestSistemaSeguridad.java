@@ -61,14 +61,21 @@ public class TestSistemaSeguridad {
 	}
 	
 	@Test
-	public void verificacion_bloqueo_internet() {
+	public void verificacion_bloqueo_internet_cantidad_maxima_sitios() {
 		
 		final int CANTIDAD_MAXIMA_ACCESOS = 2;
 		
+		// Intento de primer acceso.
 		SitioWeb sitio = this.decoradorAccesoInternet.accederSitio("116870476", "www.ecci.ucr.ac.cr", CANTIDAD_MAXIMA_ACCESOS);
-		//assertTrue("Sitio accedido: www.ecci.ucr.ac.cr", sitio.esNulo());
+		assertFalse("Sitio accedido: www.ecci.ucr.ac.cr", sitio.esNulo());
 		
-		//sitio = this.decoradorAccesoInternet.accederSitio("116870476", "www.youtube.com", CANTIDAD_MAXIMA_ACCESOS);
-		//assertTrue("Sitio accedido: www.youtube.com", sitio.esNulo());
+		// Intento de segundo acceso.
+		sitio = this.decoradorAccesoInternet.accederSitio("116870476", "www.youtube.com", CANTIDAD_MAXIMA_ACCESOS);
+		assertFalse("Sitio accedido: www.youtube.com", sitio.esNulo());
+		
+		
+		// Intento de tercer acceso.
+		sitio = this.decoradorAccesoInternet.accederSitio("116870476", "www.netflix.com", CANTIDAD_MAXIMA_ACCESOS);
+		assertTrue("Sitio accedido: www.netflix.com", sitio.esNulo());
 	}
 }
