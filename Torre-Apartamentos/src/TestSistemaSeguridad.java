@@ -51,9 +51,7 @@ public class TestSistemaSeguridad {
 	}
 	
 	@Test
-	public void validacion_sistema_identificacion_automatico() {
-		
-		//this.sistemaSeguridad.revisarEstadoCamaras();
+	public void validacionSistemaVerificacionAutomatico() {
 		
 		this.sistemaSeguridad.registrarClientesEnCamara(3, "116870476");
 		assertTrue("Numero de cedula registrado en camara 3",this.sistemaSeguridad.reconocePersona("116870476"));
@@ -61,7 +59,7 @@ public class TestSistemaSeguridad {
 	}
 	
 	@Test
-	public void verificacion_bloqueo_internet_cantidad_maxima_sitios() {
+	public void validacionBloqueoInternetPorCantidadMaximaSitios() {
 		
 		final int CANTIDAD_MAXIMA_ACCESOS = 2;
 		
@@ -77,5 +75,10 @@ public class TestSistemaSeguridad {
 		// Intento de tercer acceso.
 		sitio = this.decoradorAccesoInternet.accederSitio("116870476", "www.netflix.com", CANTIDAD_MAXIMA_ACCESOS);
 		assertTrue("Sitio accedido: www.netflix.com", sitio.esNulo());
+	}
+	
+	@Test
+	public void validacionBloqueoPorSitioWebEnListaNegra(){
+		
 	}
 }
