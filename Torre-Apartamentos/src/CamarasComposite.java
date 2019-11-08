@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class CamarasComposite implements CamaraComponent {
 	
-	private ArrayList<CamaraComponent> camaras;
+	private ArrayList<CamaraComponent> camaras = new ArrayList<CamaraComponent>();
 
 	@Override
 	public void agregar(CamaraComponent camara) {

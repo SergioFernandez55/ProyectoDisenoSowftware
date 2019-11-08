@@ -26,7 +26,7 @@ public class SistemaIntegradoSeguridad implements Serializable, SistemaSeguridad
 	}
 	
 	@Override
-	public void rotarCamarasDerecha(ArrayList<Integer> numerosCamara) {
+	public void rotarCamarasDerecha(Integer... numerosCamara) {
 
 		for (Integer numeroCamara : numerosCamara) {
 			if (centroControlCamaras.existeCamara(numeroCamara)) {
@@ -37,7 +37,7 @@ public class SistemaIntegradoSeguridad implements Serializable, SistemaSeguridad
 	}
 
 	@Override
-	public void rotarCamarasIzquierda(ArrayList<Integer> numerosCamara) {
+	public void rotarCamarasIzquierda(Integer... numerosCamara) {
 		for (Integer numeroCamara : numerosCamara) {
 			if (centroControlCamaras.existeCamara(numeroCamara)) {
 				centroControlCamaras.agregarCamaraSeleccion(numeroCamara);
@@ -47,7 +47,7 @@ public class SistemaIntegradoSeguridad implements Serializable, SistemaSeguridad
 	}
 
 	@Override
-	public void centrarCamaras(ArrayList<Integer> numerosCamara) {
+	public void centrarCamaras(Integer... numerosCamara) {
 		for (Integer numeroCamara : numerosCamara) {
 			if (centroControlCamaras.existeCamara(numeroCamara)) {
 				centroControlCamaras.agregarCamaraSeleccion(numeroCamara);

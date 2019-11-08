@@ -44,6 +44,7 @@ public class TestSistemaSeguridad {
 		this.sistemaSeguridad.setDecoradorDeSistemaAccesos(this.decoradorSistemaAccesos);
 		this.sistemaSeguridad.setDecoradorProxyInternet(this.decoradorAccesoInternet);
 		this.sistemaSeguridad.setCentroControlCamaras(centroControlCamaras);
+		
 		this.sistemaSeguridad.agregarCamarasCentroControl(CANTIDAD_CAMARAS);
 		
 		// Registro de multiples clientes en una camara.
@@ -56,6 +57,21 @@ public class TestSistemaSeguridad {
 		this.sistemaSeguridad.registrarClientesEnCamara(3, "116870476");
 		assertTrue("Numero de cedula registrado en camara 3",this.sistemaSeguridad.reconocePersona("116870476"));
 		assertFalse("Numero de cedula no registrado en camara 5", this.sistemaSeguridad.reconocePersona("106580325"));
+		
+		// Estado inicial de las cámaras.
+		this.sistemaSeguridad.revisarEstadoCamaras();
+		
+		this.sistemaSeguridad.rotarCamarasDerecha(1,3,5);
+		System.out.println("\n");
+		this.sistemaSeguridad.revisarEstadoCamaras();
+		
+		this.sistemaSeguridad.centrarCamaras(1,3,5);
+		System.out.println("\n");
+		this.sistemaSeguridad.revisarEstadoCamaras();
+		
+		this.sistemaSeguridad.rotarCamarasIzquierda(1,3,5);
+		System.out.println("\n");
+		this.sistemaSeguridad.revisarEstadoCamaras();
 	}
 	
 	@Test
@@ -70,7 +86,6 @@ public class TestSistemaSeguridad {
 		// Intento de segundo acceso.
 		sitio = this.decoradorAccesoInternet.accederSitio("116870476", "www.youtube.com", CANTIDAD_MAXIMA_ACCESOS);
 		assertFalse("Sitio accedido: www.youtube.com", sitio.esNulo());
-		
 		
 		// Intento de tercer acceso.
 		sitio = this.decoradorAccesoInternet.accederSitio("116870476", "www.netflix.com", CANTIDAD_MAXIMA_ACCESOS);
