@@ -65,6 +65,7 @@ public class TestSistemaSeguridad {
 		
 		final int CANTIDAD_MAXIMA_ACCESOS = 2;
 		
+		
 		SitioWeb sitio = this.decoradorAccesoInternet.accederSitio("116870476", "www.ecci.ucr.ac.cr", CANTIDAD_MAXIMA_ACCESOS);
 		//assertTrue("Sitio accedido: www.ecci.ucr.ac.cr", sitio.esNulo());
 		
