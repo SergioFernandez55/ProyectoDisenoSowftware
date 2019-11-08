@@ -53,7 +53,7 @@ public class TestSistemaSeguridad {
 	@Test
 	public void validacion_sistema_identificacion_automatico() {
 		
-		this.sistemaSeguridad.revisarEstadoCamaras();
+		//this.sistemaSeguridad.revisarEstadoCamaras();
 		
 		this.sistemaSeguridad.registrarClientesEnCamara(3, "116870476");
 		assertTrue("Numero de cedula registrado en camara 3",this.sistemaSeguridad.reconocePersona("116870476"));
@@ -63,5 +63,12 @@ public class TestSistemaSeguridad {
 	@Test
 	public void verificacion_bloqueo_internet() {
 		
+		final int CANTIDAD_MAXIMA_ACCESOS = 2;
+		
+		SitioWeb sitio = this.decoradorAccesoInternet.accederSitio("116870476", "www.ecci.ucr.ac.cr", CANTIDAD_MAXIMA_ACCESOS);
+		//assertTrue("Sitio accedido: www.ecci.ucr.ac.cr", sitio.esNulo());
+		
+		//sitio = this.decoradorAccesoInternet.accederSitio("116870476", "www.youtube.com", CANTIDAD_MAXIMA_ACCESOS);
+		//assertTrue("Sitio accedido: www.youtube.com", sitio.esNulo());
 	}
 }

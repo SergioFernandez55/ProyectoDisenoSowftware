@@ -13,6 +13,6 @@ public class Bitacora {
 			this.bitacoraClientes.put(identificadorCliente, 1);
 		}
 		
-		return this.bitacoraClientes.get(identificadorCliente);
+		return this.bitacoraClientes.get(identificadorCliente); // Devuelve la cantidad de accesos del cliente.
 	}
 }
