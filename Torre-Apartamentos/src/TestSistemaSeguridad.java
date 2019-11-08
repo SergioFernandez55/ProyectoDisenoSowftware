@@ -52,7 +52,7 @@ public class TestSistemaSeguridad {
 	}
 	
 	@Test
-	public void validacionSistemaVerificacionAutomatico() {
+	public void validacionSistemaReconocimientoAutomatico() {
 		
 		this.sistemaSeguridad.registrarClientesEnCamara(3, "116870476");
 		assertTrue("Numero de cedula registrado en camara 3",this.sistemaSeguridad.reconocePersona("116870476"));
