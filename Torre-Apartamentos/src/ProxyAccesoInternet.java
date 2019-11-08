@@ -19,5 +19,9 @@ public class ProxyAccesoInternet implements Internet{
 			return this.internet.accederSitio(identificadorCliente, sitio, cantidadMaximaAccesos);
 		}
 	}
+	
+	public void agregarSitioWebAListaNegra(String sitio){
+		this.sitiosWebBloqueados.add(sitio);
+	}
 }
 
