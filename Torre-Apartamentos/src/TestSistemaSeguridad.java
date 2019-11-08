@@ -48,7 +48,6 @@ public class TestSistemaSeguridad {
 		
 		// Registro de multiples clientes en una camara.
 		this.sistemaSeguridad.registrarClientesEnCamara(2,"111111111","222222222" ,"333333333");
-
 	}
 	
 	@Test
@@ -62,7 +61,7 @@ public class TestSistemaSeguridad {
 	}
 	
 	@Test
-	public void verificacion_bloque_internet() {
+	public void verificacion_bloqueo_internet() {
 		
 	}
 }
