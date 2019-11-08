@@ -9,12 +9,11 @@ public class DecoradorProxyAccesoInternet implements Internet {
 		this.bitacoraClientes = bitacora;
 	}
 
-	// El par√°metro cantidad-maxima-accesos es necesario para las pruebas y debe ser
+	// El par·metro cantidad-maxima-accesos es necesario para las pruebas y debe ser
 	// eliminado.
 	@Override
 	public SitioWeb accederSitio(String identificadorCliente, String sitio, int cantidadMaximaAccesos) {
-		SitioWeb sitioCliente = this.proxyAccesoInternet.accederSitio(identificadorCliente, sitio,
-				cantidadMaximaAccesos);
+		SitioWeb sitioCliente = this.proxyAccesoInternet.accederSitio(identificadorCliente, sitio, cantidadMaximaAccesos);
 
 		if (!sitioCliente.esNulo()) {
 			int cantidadAccesos = this.bitacoraClientes.actualizar(identificadorCliente);
