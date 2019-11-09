@@ -52,26 +52,31 @@ public class TestSistemaSeguridad {
 	}
 	
 	@Test
+	public void validacionEstadoCamarasLuegoComando(){
+		
+		// Estado inicial de las cámaras.
+		System.out.println("Estado inicial de las camaras:\n");
+		this.sistemaSeguridad.revisarEstadoCamaras();
+		
+		this.sistemaSeguridad.rotarCamarasDerecha(1,3,5);
+		System.out.println("Camaras 1,3,5 rotadas hacia la derecha:\n");
+		this.sistemaSeguridad.revisarEstadoCamaras();
+		
+		this.sistemaSeguridad.centrarCamaras(1,3,5);
+		System.out.println("Camaras 1,3,5 centradas:\n");
+		this.sistemaSeguridad.revisarEstadoCamaras();
+		
+		this.sistemaSeguridad.rotarCamarasIzquierda(1,3,5);
+		System.out.println("Camaras 1,3,5 rotadas hacia la izquierda:\n");
+		this.sistemaSeguridad.revisarEstadoCamaras();
+	}
+	
+	@Test
 	public void validacionSistemaReconocimientoAutomatico() {
 		
 		this.sistemaSeguridad.registrarClientesEnCamara(3, "116870476");
 		assertTrue("Numero de cedula registrado en camara 3",this.sistemaSeguridad.reconocePersona("116870476"));
 		assertFalse("Numero de cedula no registrado en camara 5", this.sistemaSeguridad.reconocePersona("106580325"));
-		
-		// Estado inicial de las cámaras.
-		this.sistemaSeguridad.revisarEstadoCamaras();
-		
-		this.sistemaSeguridad.rotarCamarasDerecha(1,3,5);
-		System.out.println("\n");
-		this.sistemaSeguridad.revisarEstadoCamaras();
-		
-		this.sistemaSeguridad.centrarCamaras(1,3,5);
-		System.out.println("\n");
-		this.sistemaSeguridad.revisarEstadoCamaras();
-		
-		this.sistemaSeguridad.rotarCamarasIzquierda(1,3,5);
-		System.out.println("\n");
-		this.sistemaSeguridad.revisarEstadoCamaras();
 	}
 	
 	@Test
