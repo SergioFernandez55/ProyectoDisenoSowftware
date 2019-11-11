@@ -9,7 +9,7 @@ public class ActuadorAireAcondicionado extends Actuador{
 	}
 
 	public void accion() {
-		System.out.println("Enfria");		
+		System.out.println("Aire acondicionado enfria");		
 	}
 	
 }

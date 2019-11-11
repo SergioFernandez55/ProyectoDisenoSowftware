@@ -9,7 +9,7 @@ public class ActuadorAspersores extends Actuador{
 	}
 
 	public void accion() {
-		System.out.println("Tiro agua");	
+		System.out.println("Aspersor tira agua");	
 	}
 
 }

@@ -8,7 +8,7 @@ public class ActuadorLampara extends Actuador{
 	}
 
 	public void accion() {
-		System.out.println("Encendida");
+		System.out.println("Lampara encendida");
 	}
 
 }
