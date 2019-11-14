@@ -8,8 +8,13 @@ public class ActuadorAspersores extends Actuador{
 		// TODO Auto-generated constructor stub
 	}
 
-	public void accion() {
-		System.out.println("Aspersor tira agua");	
+	public void accion() {		
+		if(activo == true) {
+			System.out.println("Aspersor tira agua");
+			
+		}else {
+			System.out.println("Aspersor apagado");
+		}
 	}
 
 }

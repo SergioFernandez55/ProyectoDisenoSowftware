@@ -6,10 +6,12 @@ public abstract class Sensor implements DispositivoInteligente{
 
 	public Sensor(MediadorDispositivosInteligentes mediador) {
 		this.mediador = mediador;
+		activo = false;
 	}
 	
 	public boolean activaDispositivo() {
 		activo = true;
+		resultado();
 		return mediador.llamarComportamiento(this);
 	}
 	
@@ -17,5 +19,14 @@ public abstract class Sensor implements DispositivoInteligente{
 		this.mediador = mediador;
 	}
 	
+	public boolean desactivaDispositivo() {
+		activo = false;
+		return activo;
+	}
+	
+	public boolean estaActivo() {
+		return activo;
+	}
 
+	abstract void resultado();
 }

@@ -39,4 +39,6 @@ public class Comportamiento {
 	public DispositivoInteligente getEmisor() {
 		return this.emisor;
 	}
+	
+	//Quitar comportamiento
 }

@@ -7,8 +7,13 @@ public class ActuadorLampara extends Actuador{
 		// TODO Auto-generated constructor stub
 	}
 
-	public void accion() {
-		System.out.println("Lampara encendida");
+	public void accion() {		
+		if(activo == true) {
+			System.out.println("Lampara encendida");
+			
+		}else {
+			System.out.println("Lampara apagada");
+		}
 	}
 
 }

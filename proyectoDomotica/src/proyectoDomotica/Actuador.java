@@ -7,6 +7,7 @@ public abstract class Actuador implements DispositivoInteligente{
 
 	public Actuador(MediadorDispositivosInteligentes mediador) {
 		this.mediador = mediador;
+		activo = false;
 	}
 	
 	public final boolean activaDispositivo() {
@@ -17,6 +18,7 @@ public abstract class Actuador implements DispositivoInteligente{
 	
 	public boolean desactivaDispositivo() {
 		activo = false;
+		accion();
 		return mediador.llamarComportamiento(this);
 	}
 	
