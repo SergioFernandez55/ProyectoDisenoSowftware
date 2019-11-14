@@ -6,12 +6,12 @@ public abstract class SandwichBase {
 	
 	private String pan;
 	private String carne;
-	private ArrayList<Ingrediente> ingredientesAdicionales;
+	private ArrayList<IngredienteAdicional> ingredientesAdicionales;
 	
 	public SandwichBase() {
 	}
 	
-	public void agregarIngrediente(Ingrediente adicional) {
+	public void agregarIngrediente(IngredienteAdicional adicional) {
 	}
 	
 	public void removerIngrediente() {
