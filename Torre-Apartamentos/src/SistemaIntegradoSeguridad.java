@@ -12,13 +12,16 @@ public class SistemaIntegradoSeguridad implements Serializable, SistemaSeguridad
 	private SistemaAccesos sistemaAccesos;
 	private DecoradorSistemaAccesos decoradorSistemaAccesos;
 	
-	private DecoradorProxyAccesoInternet decoradorProxyInternet; // Hacer new acá y eliminar los dos parámetros que tiene el decorador actualmente.
+	private DecoradorProxyAccesoInternet decoradorProxyInternet;
 
 	private SistemaIntegradoSeguridad() {
+		
 		this.centroControlCamaras = new CentroControlCamaras();
 		this.sistemaAccesos = new SistemaAccesosTorre();
 		this.decoradorSistemaAccesos = new DecoradorSistemaAccesos(sistemaAccesos);
 		this.decoradorSistemaAccesos.setRegistro(new Registro());
+		this.decoradorProxyInternet = new DecoradorProxyAccesoInternet(new ProxyAccesoInternet(new AccesoInternet()));
+		this.decoradorProxyInternet.setBitacora(new Bitacora());
 	}
 
 	public synchronized static SistemaIntegradoSeguridad getInstancia() {

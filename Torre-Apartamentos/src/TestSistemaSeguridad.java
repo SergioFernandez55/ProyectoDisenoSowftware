@@ -26,7 +26,8 @@ public class TestSistemaSeguridad {
 		this.accesoInternet = new AccesoInternet();
 		this.bitacora = new Bitacora();
 		this.proxyAccesoInternet = new ProxyAccesoInternet(this.accesoInternet);
-		this.decoradorAccesoInternet = new DecoradorProxyAccesoInternet(this.proxyAccesoInternet, this.bitacora);
+		this.decoradorAccesoInternet = new DecoradorProxyAccesoInternet(this.proxyAccesoInternet);
+		this.decoradorAccesoInternet.setBitacora(bitacora);
 		
 		this.centroControlCamaras = new CentroControlCamaras();
 		
