@@ -10,10 +10,10 @@ public class SistemaIntegradoSeguridad implements Serializable, SistemaSeguridad
 
 	private CentroControlCamaras centroControlCamaras = new CentroControlCamaras();
 	private SistemaAccesos sistemaAccesos = new SistemaAccesosTorre();
-	private Registro registroEntrada = new RegistroEntrada();
-	private Registro registroSalida = new RegistroSalida();
-	private DecoradorSistemaAccesos decoradorSistemaAccesos;
-	private DecoradorProxyAccesoInternet decoradorProxyInternet;
+	private DecoradorSistemaAccesos decoradorSistemaAccesos = new DecoradorSistemaAccesos(sistemaAccesos);
+	
+	
+	private DecoradorProxyAccesoInternet decoradorProxyInternet; // Hacer new acá y eliminar los dos parámetros que tiene el decorador actualmente.
 
 	private SistemaIntegradoSeguridad() {
 	}
