@@ -22,4 +22,8 @@ public class DecoradorProxyAccesoInternet implements Internet {
 		}
 		return sitioCliente;
 	}
+	
+	public void setBitacora(Bitacora bitacora){
+		this.bitacoraClientes = bitacora;
+	}
 }
