@@ -34,11 +34,9 @@ public class TestSistemaSeguridad {
 		
 		this.centroControlCamaras = new CentroControlCamaras();
 		
-		this.registro = new Registro();
-		this.decoradorSistemaAccesos.setRegistro(registro);
-		
-		
 		this.sistemaSeguridad = SistemaIntegradoSeguridad.getInstancia();
+		
+		
 		this.sistemaSeguridad.setDecoradorDeSistemaAccesos(this.decoradorSistemaAccesos);
 		this.sistemaSeguridad.setDecoradorProxyInternet(this.decoradorAccesoInternet);
 		this.sistemaSeguridad.setCentroControlCamaras(centroControlCamaras);

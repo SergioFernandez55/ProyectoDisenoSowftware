@@ -8,14 +8,17 @@ public class SistemaIntegradoSeguridad implements Serializable, SistemaSeguridad
 	private static final long serialVersionUID = 1L;
 	private static SistemaIntegradoSeguridad instancia;
 
-	private CentroControlCamaras centroControlCamaras = new CentroControlCamaras();
-	private SistemaAccesos sistemaAccesos = new SistemaAccesosTorre();
-	private DecoradorSistemaAccesos decoradorSistemaAccesos = new DecoradorSistemaAccesos(sistemaAccesos);
-	
+	private CentroControlCamaras centroControlCamaras;
+	private SistemaAccesos sistemaAccesos;
+	private DecoradorSistemaAccesos decoradorSistemaAccesos;
 	
 	private DecoradorProxyAccesoInternet decoradorProxyInternet; // Hacer new acá y eliminar los dos parámetros que tiene el decorador actualmente.
 
 	private SistemaIntegradoSeguridad() {
+		this.centroControlCamaras = new CentroControlCamaras();
+		this.sistemaAccesos = new SistemaAccesosTorre();
+		this.decoradorSistemaAccesos = new DecoradorSistemaAccesos(sistemaAccesos);
+		this.decoradorSistemaAccesos.setRegistro(new Registro());
 	}
 
 	public synchronized static SistemaIntegradoSeguridad getInstancia() {
