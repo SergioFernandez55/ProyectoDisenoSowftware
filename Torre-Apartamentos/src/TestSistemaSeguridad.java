@@ -1,8 +1,4 @@
 import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,8 +7,7 @@ public class TestSistemaSeguridad {
 	final int CANTIDAD_CAMARAS = 5;
 	
 	// --- Decorador del sistema de accesos ---
-	Registro registroEntrada;
-	Registro registroSalida;
+	Registro registro;
 	SistemaAccesos sistemaAccesos;
 	DecoradorSistemaAccesos decoradorSistemaAccesos;
 	
@@ -28,20 +23,16 @@ public class TestSistemaSeguridad {
 	@Before
 	public void init() {
 		
-		this.registroEntrada = new RegistroEntrada();
-		this.registroSalida = new RegistroSalida();
-		this.sistemaAccesos = new SistemaAccesosTorre();
-		this.decoradorSistemaAccesos = new DecoradorSistemaAccesos(sistemaAccesos, registroEntrada);
-		
 		this.accesoInternet = new AccesoInternet();
 		this.bitacora = new Bitacora();
 		this.proxyAccesoInternet = new ProxyAccesoInternet(this.accesoInternet);
-		this.decoradorAccesoInternet = new DecoradorProxyAccesoInternet(this.proxyAccesoInternet, this.bitacora);
+		this.decoradorAccesoInternet = new DecoradorProxyAccesoInternet(this.proxyAccesoInternet);
+		this.decoradorAccesoInternet.setBitacora(bitacora);
 		
 		this.centroControlCamaras = new CentroControlCamaras();
 		
 		this.sistemaSeguridad = SistemaIntegradoSeguridad.getInstancia();
-		this.sistemaSeguridad.setDecoradorDeSistemaAccesos(this.decoradorSistemaAccesos);
+		
 		this.sistemaSeguridad.setDecoradorProxyInternet(this.decoradorAccesoInternet);
 		this.sistemaSeguridad.setCentroControlCamaras(centroControlCamaras);
 		
