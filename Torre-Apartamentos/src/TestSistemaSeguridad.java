@@ -1,8 +1,4 @@
 import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -36,8 +32,6 @@ public class TestSistemaSeguridad {
 		
 		this.sistemaSeguridad = SistemaIntegradoSeguridad.getInstancia();
 		
-		
-		this.sistemaSeguridad.setDecoradorDeSistemaAccesos(this.decoradorSistemaAccesos);
 		this.sistemaSeguridad.setDecoradorProxyInternet(this.decoradorAccesoInternet);
 		this.sistemaSeguridad.setCentroControlCamaras(centroControlCamaras);
 		

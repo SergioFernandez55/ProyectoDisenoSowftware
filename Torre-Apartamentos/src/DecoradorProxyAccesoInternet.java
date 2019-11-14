@@ -4,9 +4,8 @@ public class DecoradorProxyAccesoInternet implements Internet {
 	private ProxyAccesoInternet proxyAccesoInternet;
 	private Bitacora bitacoraClientes;
 
-	public DecoradorProxyAccesoInternet(ProxyAccesoInternet proxyInternet, Bitacora bitacora) {
+	public DecoradorProxyAccesoInternet(ProxyAccesoInternet proxyInternet) {
 		this.proxyAccesoInternet = proxyInternet;
-		this.bitacoraClientes = bitacora;
 	}
 
 	// El parámetro cantidad-maxima-accesos es necesario para las pruebas y debe ser
