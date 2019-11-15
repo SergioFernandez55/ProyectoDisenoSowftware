@@ -3,7 +3,7 @@ package restaurante;
 public class SandwichItaliano extends BaseItaliano implements Sandwich{
 
 	@Override
-	public String descripcion() {
+	public String getDescripcion() {
 		return this.getPan() +  " " + getCarne();
 	}
 

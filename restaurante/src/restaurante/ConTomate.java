@@ -3,37 +3,33 @@ package restaurante;
 public class ConTomate implements Sandwich {
 
 	private Sandwich sandwich;
-
+	private Ingrediente adicional;
+	
 	public ConTomate(Sandwich sandwich) {
 		this.sandwich = sandwich;
+		this.adicional = new Tomate();
+		this.sandwich.setPrecio(this.sandwich.getPrecio() + this.adicional.getPrecio());
+		this.sandwich.addIngredienteAdicional(this.adicional);
 	}
 
 	@Override
-	public String descripcion() {
-		return this.sandwich.descripcion() + " con tomate";
+	public String getDescripcion() {
+		return this.sandwich.getDescripcion() + this.adicional.getDescripcion();
 	}
-
-	@Override
-	public double precio() {
-		return this.sandwich.precio() + .5;
-	}
-
+	
 	@Override
 	public void addIngredienteAdicional(Ingrediente ingrediente) {
-		// TODO Auto-generated method stub
-		
+		this.sandwich.addIngredienteAdicional(ingrediente);
 	}
 
 	@Override
 	public void setPrecio(double precio) {
-		// TODO Auto-generated method stub
-		
+		this.sandwich.setPrecio(precio);
 	}
 
 	@Override
 	public double getPrecio() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.sandwich.getPrecio();
 	}
 
 }

@@ -1,14 +1,15 @@
 package restaurante;
 
-public class Queso implements Ingrediente {
-	
+public class Tomate implements Ingrediente {
+
 	@Override
 	public double getPrecio() {
-		return 0.75;
+		return 0.50;
 	}
 
 	@Override
 	public String getDescripcion() {
-		return "Queso";
+		return "Tomate";
 	}
+
 }

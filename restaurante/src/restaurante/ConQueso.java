@@ -3,20 +3,23 @@ package restaurante;
 public class ConQueso implements Sandwich {
 
 	private Sandwich sandwich;
+	private Ingrediente adicional;
 
 	public ConQueso(Sandwich sandwich) {
 		this.sandwich = sandwich;
-		Queso queso = new Queso();
-		this.sandwich.setPrecio(this.sandwich.getPrecio() + 0.75);
+		this.adicional = new Queso();
+		this.sandwich.setPrecio(this.sandwich.getPrecio() + this.adicional.getPrecio());
+		this.sandwich.addIngredienteAdicional(this.adicional);
 	}
 
 	@Override
-	public String descripcion() {
-		return this.sandwich.descripcion() + " con queso";
+	public String getDescripcion() {
+		return this.sandwich.getDescripcion() + this.adicional.getDescripcion();
 	}
 	
 	@Override
 	public void addIngredienteAdicional(Ingrediente ingrediente) {
+		this.sandwich.addIngredienteAdicional(ingrediente);
 	}
 
 	@Override
