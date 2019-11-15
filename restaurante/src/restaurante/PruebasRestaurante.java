@@ -23,13 +23,14 @@ public class PruebasRestaurante {
 		caja.addProducto(italiano);
 		caja.addProducto(mexicano);
 		caja.addProducto(mexicanoQueso);
-		caja.addProducto(dobleQueso);		
+		caja.addProducto(dobleQueso);
 		
 		caja.impirmirOrden();
 		Memento antesTripleQueso = caja.creaEstado();
-		caja.addProducto(tripleQueso);
 		
 		caja.addProducto(tripleQueso);
+		caja.addProducto(tripleQueso);
+		
 		caja.impirmirOrden();
 		
 		caja.restauraEstado(antesTripleQueso);
