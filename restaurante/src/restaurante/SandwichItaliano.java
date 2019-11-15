@@ -11,5 +11,4 @@ public class SandwichItaliano implements Sandwich{
 	public double precio() {
 		return 6;
 	}
-	
 }

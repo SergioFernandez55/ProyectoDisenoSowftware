@@ -6,5 +6,4 @@ public class SandwichItalianoFactory extends SandwichFactory{
 	protected Sandwich creaSandwitch() {
 		return new SandwichItaliano();
 	}
-
 }

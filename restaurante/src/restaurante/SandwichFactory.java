@@ -7,5 +7,4 @@ public abstract class SandwichFactory {
 	}
 	
 	protected abstract Sandwich creaSandwitch();
-
 }
