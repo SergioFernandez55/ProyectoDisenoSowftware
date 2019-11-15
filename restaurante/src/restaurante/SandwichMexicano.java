@@ -1,14 +1,25 @@
 package restaurante;
 
-public class SandwichMexicano implements Sandwich{
+public class SandwichMexicano extends BaseMexicano implements Sandwich {
 
 	@Override
 	public String descripcion() {
-		return "Sandwich Mexicano";
+		return this.getPan() +  " " + getCarne();
 	}
-
+	
 	@Override
-	public double precio() {
-		return 5;
+	public void addIngredienteAdicional(Ingrediente ingrediente) {
+		this.addIngrediente(ingrediente);
 	}
+	
+	@Override
+	public double getPrecio(){
+		return this.getPrecio();
+	}
+	
+	@Override
+	public void setPrecio(double precio){
+		this.setPrecio(precio);
+	}
+	
 }

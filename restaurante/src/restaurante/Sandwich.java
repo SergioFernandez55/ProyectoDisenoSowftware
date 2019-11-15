@@ -1,6 +1,8 @@
 package restaurante;
 
 public interface Sandwich {
-	public String descripcion();
-	public double precio();
+	String descripcion();
+	void setPrecio(double precio);
+	void addIngredienteAdicional(Ingrediente ingrediente);
+	double getPrecio();
 }
