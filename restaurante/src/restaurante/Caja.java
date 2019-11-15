@@ -47,7 +47,7 @@ public class Caja {
 	public void impirmirOrden() {
 		
 		for(LineaCompra linea: this.orden.values()) {
-			System.out.println("Descripcion: " + linea.getDescripcion() + 
+			System.out.println("Descripcion: " + linea.getDescripcion() + " Cantidad: " + linea.getCantidad() + 
 					"\n\t Precio: " + linea.getPrecio() + "\n");
 		}
 		System.out.println("------------------------------------------------\n");
