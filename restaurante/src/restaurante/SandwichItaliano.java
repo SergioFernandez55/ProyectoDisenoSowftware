@@ -1,25 +1,14 @@
 package restaurante;
 
-public class SandwichItaliano extends BaseItaliano implements Sandwich{
+public class SandwichItaliano implements Sandwich{
 
 	@Override
 	public String getDescripcion() {
-		return this.getPan() +  " " + getCarne();
-	}
-
-	@Override
-	public void addIngredienteAdicional(Ingrediente ingrediente) {
-		this.addIngrediente(ingrediente);
+		return "Pan: Ciabatta Carne: Salami";
 	}
 
 	@Override
 	public double getPrecio(){
-		return this.getPrecio();
+		return 6.0;
 	}
-	
-	@Override
-	public void setPrecio(double precio){
-		this.setPrecio(precio);
-	}
-
 }
