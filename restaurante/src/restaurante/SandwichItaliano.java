@@ -1,6 +1,6 @@
 package restaurante;
 
-public class SandwichItaliano implements Sandwich{
+public class SandwichItaliano implements Producto {
 
 	@Override
 	public String getDescripcion() {

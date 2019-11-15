@@ -3,7 +3,7 @@ package restaurante;
 public class SandwichMexicanoFactory extends SandwichFactory{
 
 	@Override
-	protected Sandwich creaSandwitch() {
+	protected Producto creaSandwitch() {
 		return new SandwichMexicano();
 	}
 }

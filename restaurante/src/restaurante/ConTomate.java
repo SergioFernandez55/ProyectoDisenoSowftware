@@ -1,10 +1,10 @@
 package restaurante;
 
-public class ConTomate implements Sandwich {
+public class ConTomate implements Producto {
 
-	private Sandwich sandwich;
+	private Producto sandwich;
 	
-	public ConTomate(Sandwich sandwich) {
+	public ConTomate(Producto sandwich) {
 		this.sandwich = sandwich;
 	}
 

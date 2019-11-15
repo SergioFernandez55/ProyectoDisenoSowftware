@@ -1,10 +1,10 @@
 package restaurante;
 
-public class ConQueso implements Sandwich {
+public class ConQueso implements Producto {
 
-	private Sandwich sandwich;
+	private Producto sandwich;
 
-	public ConQueso(Sandwich sandwich) {
+	public ConQueso(Producto sandwich) {
 		this.sandwich = sandwich;
 	}
 

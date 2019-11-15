@@ -2,9 +2,9 @@ package restaurante;
 
 public abstract class SandwichFactory {
 	
-	public Sandwich crea() {
+	public Producto crea() {
 		return creaSandwitch();
 	}
 	
-	protected abstract Sandwich creaSandwitch();
+	protected abstract Producto creaSandwitch();
 }
