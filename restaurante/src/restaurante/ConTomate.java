@@ -10,7 +10,7 @@ public class ConTomate implements Producto {
 
 	@Override
 	public String getDescripcion() {
-		return this.sandwich.getDescripcion() + " Adicional: Tomate";
+		return this.sandwich.getDescripcion() + " + Tomate Adicional";
 	}
 	
 	@Override

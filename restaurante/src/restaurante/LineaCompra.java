@@ -14,9 +14,37 @@ public class LineaCompra {
 		this.descripcion = this.producto.getDescripcion();
 	}
 	
-	public void incrementa(Producto producto) {
+	public void incrementa() {
 		++this.cantidad;
-		this.precio += producto.getPrecio();
+		this.precio += this.producto.getPrecio();
+	}
+	
+	public double getPrecio() {
+		return this.precio;
+	}
+	
+	public String getDescripcion() {
+		return this.descripcion;
+	}
+
+	public Producto getProducto() {
+		return producto;
+	}
+
+	public int getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 }

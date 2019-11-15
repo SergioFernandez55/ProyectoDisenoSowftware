@@ -10,7 +10,7 @@ public class ConQueso implements Producto {
 
 	@Override
 	public String getDescripcion() {
-		return this.sandwich.getDescripcion() + " Adicional: Queso";
+		return this.sandwich.getDescripcion() + " + Queso Adicional";
 	}
 	
 	@Override

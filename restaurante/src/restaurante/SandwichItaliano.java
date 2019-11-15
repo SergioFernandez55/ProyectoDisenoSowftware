@@ -4,7 +4,7 @@ public class SandwichItaliano implements Producto {
 
 	@Override
 	public String getDescripcion() {
-		return "Pan: Ciabatta Carne: Salami";
+		return "Italiano Basico";
 	}
 
 	@Override

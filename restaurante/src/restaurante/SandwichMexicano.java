@@ -4,7 +4,7 @@ public class SandwichMexicano implements Producto {
 
 	@Override
 	public String getDescripcion() {
-		return "Pan: Torta Carne: Carnitas";
+		return "Mexicano Basico";
 	}
 	
 	@Override
