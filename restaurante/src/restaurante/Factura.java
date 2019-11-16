@@ -18,7 +18,7 @@ public class Factura {
 		
 		buffer.append( 
 				"**************************************************" + 
-				"Restaurante Planta Baja\n" +
+				"\t\t***** Restaurante Planta Baja *****\n" +
 			    "Fecha: " + this.getFecha() + "\n" +
 				"Detalle: \n " + this.getDetalle()+ "\n\n" +
 			    "--------------------------------------------------"+
@@ -26,7 +26,6 @@ public class Factura {
 				 "--------------------------------------------------" + 
 				"**************************************************\n" 
 		);
-		
 		
 		return buffer.toString();
 	}
