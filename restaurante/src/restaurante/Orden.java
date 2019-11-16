@@ -1,6 +1,7 @@
 package restaurante;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Orden {
 
@@ -30,14 +31,35 @@ public class Orden {
 
 		return precioTotalOrden;
 	}
-	
+
 	public String getDetalle() {
-		
+
 		StringBuffer buffer = new StringBuffer();
 
 		for (LineaCompra linea : this.orden.values()) {
-			buffer.append("\tDescripcion: " + linea.getDescripcion() + " | Cantidad: " + linea.getCantidad() + " | Precio: " + linea.getPrecio() + "\n");
+			buffer.append("\tDescripcion: " + linea.getDescripcion() + " | Cantidad: " + linea.getCantidad()
+					+ " | Precio: " + linea.getPrecio() + "\n");
 		}
 		return buffer.toString();
 	}
+
+	private Orden(HashMap<Producto, LineaCompra> orden){
+		this.orden = orden;
+	}
+	
+	public Orden clonar() {
+		
+		HashMap<Producto, LineaCompra> copia = new HashMap<>(this.orden.size());
+		
+		for (Map.Entry<Producto, LineaCompra> entrada : this.orden.entrySet()) {
+			LineaCompra lineaOriginal = entrada.getValue();
+			LineaCompra copiaLinea = new LineaCompra(entrada.getKey());
+			copiaLinea.setCantidad(lineaOriginal.getCantidad());
+			copiaLinea.setDescripcion(lineaOriginal.getDescripcion());
+			copiaLinea.setPrecio(lineaOriginal.getPrecio());
+			copia.put(entrada.getKey(), copiaLinea);
+		}
+		
+		return new Orden(copia);
+	}	
 }

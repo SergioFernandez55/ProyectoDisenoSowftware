@@ -17,13 +17,13 @@ public class Factura {
 		StringBuffer buffer = new StringBuffer();
 		
 		buffer.append( 
-				"**************************************************" + 
-				"\t\t***** Restaurante Planta Baja *****\n" +
+				"**************************************************\n" + 
+				"\t\tRestaurante Planta Baja\n" +
 			    "Fecha: " + this.getFecha() + "\n" +
 				"Detalle: \n " + this.getDetalle()+ "\n\n" +
-			    "--------------------------------------------------"+
-			    "Precio total: " + this.getPrecioTotal() +
-				 "--------------------------------------------------" + 
+			    "--------------------------------------------------\n" +
+			    "Precio total: " + this.getPrecioTotal() + "\n" +
+				 "--------------------------------------------------\n" + 
 				"**************************************************\n" 
 		);
 		
