@@ -1,26 +1,93 @@
 import java.util.ArrayList;
-
+import java.util.Vector;
+import java.util.HashMap;
 public class Ascensor {
 	private int identificador;
 	private String direccionActual = "quieto";
 	private int pisoActual;
-	private ArrayList<Integer> listaDestinos = new ArrayList<Integer>();
-	private int pisoDestino;
+	//private Vector<Pair<Integer, Integer>> listaDestinos = new ArrayList<Integer>();
+	private HashMap<Integer, Integer> listaDestinos = new HashMap<Integer, Integer>();
+	private int pisoDestino = 1;
 	private int maxPasajeros;
-	private int cantidadPasajeros;
+	private int pesoActual;
+	private int pesoMax;
+	private int cantidadPasajeros = 0;
 	
 	
+	private Ascensor() {}
 	
-	public void subirUnPiso() {
+	public static class Builder {
+		private Ascensor ascensor;
+		
+		public Ascensor build() {
+			return ascensor;
+		}
+		
+		public void setMaxPasajeros(int maxPasajeros) {
+			ascensor.maxPasajeros = maxPasajeros;
+		}
+
+		public void setDireccion(String direccion) {
+			ascensor.direccionActual = direccion;
+		}
+		
+		public void setPisoActual(int piso) {
+			ascensor.pisoActual = piso;
+		}
+}
+	
+	public static class BuilderAscensorPersonas {
+		private Ascensor ascensor;
+		
+		public BuilderAscensorPersonas(Ascensor ascensor) {
+			this.ascensor = ascensor;
+		}
+		
+		public void setMaxPasajeros(int maxPasajeros) {
+			ascensor.maxPasajeros = maxPasajeros;
+		}
+		
+		public Ascensor build() {
+			return ascensor;
+		}
+	}
+	
+	public static class BuilderAscensorCarga {
+		private Ascensor ascensor;
+		
+		public BuilderAscensorCarga(Ascensor ascensor) {
+			this.ascensor = ascensor;
+		}
+		
+		public void setMaxCarga(int carga) {
+			ascensor.maxPasajeros = carga;
+		}
+		
+		public Ascensor build() {
+			return ascensor;
+		}
+	}
+
+	//int identificador, int pisoActual, int maxPasajeros
+	
+	
+	public boolean getLleno() {
+		if((cantidadPasajeros) > maxPasajeros) {
+			return true;
+		}
+		else {
+			return false;
+		}
 		
 	}
 	
-	public void bajarUnPiso() {
-		
+	
+	public int getPisoActual() {
+		return pisoActual;
 	}
 	
-	public void setMaxPasajeros(int maxPasajeros) {
-		this.maxPasajeros = maxPasajeros;
+	public String getDireccion() {
+		return direccionActual;
 	}
 	
 	public int getMaxPasajeros() {
@@ -34,30 +101,12 @@ public class Ascensor {
 		--cantidadPasajeros;
 	}
 	
-	public String getDireccion() {
-		return direccionActual;
-	}
-	
-	public void setDireccion(String direccion) {
-		 direccionActual = direccion;
-	}
-	
-	public void setPisoActual(int piso) {
-		pisoActual = piso;
-	}
-	
-	public int getPisoActual() {
-		return pisoActual;
-	}
-	
-	public boolean getLleno() {
-		if(cantidadPasajeros > maxPasajeros) {
-			return true;
-		}
-		else {
-			return false;
+	/*public int getCantidadParadas() {
+		
+		for(int pisos :) {
+			listaDestinos.get()
 		}
 		
-	}
+	}*/
 	
 }
