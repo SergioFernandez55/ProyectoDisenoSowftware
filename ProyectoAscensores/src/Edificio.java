@@ -11,20 +11,34 @@ public class Edificio {
 		cantidadAscensores = ascensores;
 	}
 	
-	public void llamaAscensor(int pisoActual, int pisoDestino) {
-		char mejorOpcion;
+	public void llamaAscensor(int pisoDestino, String direccion) {
+		int mejorOpcion = -1;
 		int pisoMasCercano;
 		Random random = new Random();
 		pisoMasCercano = random.nextInt(ascensores.size());
-		boolean pasajeroProximo;
 		for(Ascensor ascensor : ascensores) {
-			if((ascensor.getDireccion().equals("sube") && ascensor.getPisoActual() <= pisoActual)||
-			(ascensor.getDireccion().equals("baja")&& ascensor.getPisoActual() >= pisoActual) ||
+			
+			boolean aproximandoseAPasajero;
+			boolean mismaDireccion;
+			
+			if((ascensor.getDireccion().equals("sube") && ascensor.getPisoActual() <= pisoDestino)||
+			(ascensor.getDireccion().equals("baja")&& ascensor.getPisoActual() >= pisoDestino) ||
 			(ascensor.getDireccion().equals("quieto")) ) {
-				pasajeroProximo = true;				
+				
+				aproximandoseAPasajero = true;
+				
 			} else {
-				pasajeroProximo = false;
+				
+				aproximandoseAPasajero = false;
+			
 			}
+			
+			if(direccion.equals(ascensor.getDireccion()) || ascensor.getDireccion().equals("quieto")){
+				mismaDireccion = true;
+			}
+			
+			int distancia = Math.abs(pisoDestino - ascensor.getPisoActual());
+			if(aproximandoseAPasajero && mismaDireccion && (mejorOpcion == -1 || distancia < Math.abs(pisoDestino - )))
 		}
 	}
 	

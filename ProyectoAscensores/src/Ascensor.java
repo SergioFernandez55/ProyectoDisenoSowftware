@@ -1,6 +1,6 @@
 
 public class Ascensor {
-	private char identificador;
+	private int identificador;
 	private String direccionActual = "quieto";
 	private int pisoActual;
 	private int pisoDestino;
