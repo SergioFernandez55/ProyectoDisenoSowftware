@@ -1,11 +1,14 @@
+import java.util.ArrayList;
 
 public class Ascensor {
 	private int identificador;
 	private String direccionActual = "quieto";
 	private int pisoActual;
+	private ArrayList<Integer> listaDestinos = new ArrayList<Integer>();
 	private int pisoDestino;
 	private int maxPasajeros;
-	private int cantidadPasajero;
+	private int cantidadPasajeros;
+	
 	
 	
 	public void subirUnPiso() {
@@ -24,11 +27,11 @@ public class Ascensor {
 		return this.maxPasajeros;
 	}
 	
-	public void agregarPasajeros() {
-		++cantidadPasajero;
+	public void agregarPasajero() {
+		++cantidadPasajeros;
 	}
 	public void bajaPasajero() {
-		--cantidadPasajero;
+		--cantidadPasajeros;
 	}
 	
 	public String getDireccion() {
@@ -46,4 +49,15 @@ public class Ascensor {
 	public int getPisoActual() {
 		return pisoActual;
 	}
+	
+	public boolean getLleno() {
+		if(cantidadPasajeros > maxPasajeros) {
+			return true;
+		}
+		else {
+			return false;
+		}
+		
+	}
+	
 }

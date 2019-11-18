@@ -1,12 +1,17 @@
 import java.util.ArrayList;
 
 public class Sistema {
-	ArrayList<Ascensor> ascensores = new ArrayList<Ascensor>();
+	Edificio edificio;
 	
 	
-	public void addAscensor(Ascensor ascensor){
-		ascensores.add(ascensor);
+	public void llamarAscensor(int pisoDestino, String direccion) {
+		int ascensor = edificio.llamaAscensor(pisoDestino, direccion);
+		edificio.getAscesores().get(ascensor).agregarPasajero();
 	}
+	
+	/*public void addAscensor(Ascensor ascensor){
+		ascensores.add(ascensor);
+	}*/
 	
 	public void dispatch(int piso){
 		

@@ -11,19 +11,22 @@ public class Edificio {
 		cantidadAscensores = ascensores;
 	}
 	
-	public void llamaAscensor(int pisoDestino, String direccion) {
-		int mejorOpcion = -1;
+	//agregar restricciones
+	public int llamaAscensor(int pisoDestino, String direccion) {
+		int mejorOpcion = 0;
 		int pisoMasCercano;
 		Random random = new Random();
 		pisoMasCercano = random.nextInt(ascensores.size());
-		for(Ascensor ascensor : ascensores) {
+		int cantidadPersonas = 0;
+		
+		for(int i = 0; i < ascensores.size(); ++i) {
 			
-			boolean aproximandoseAPasajero;
-			boolean mismaDireccion;
+			boolean aproximandoseAPasajero = false;
+			boolean mismaDireccion = false;
 			
-			if((ascensor.getDireccion().equals("sube") && ascensor.getPisoActual() <= pisoDestino)||
-			(ascensor.getDireccion().equals("baja")&& ascensor.getPisoActual() >= pisoDestino) ||
-			(ascensor.getDireccion().equals("quieto")) ) {
+			if((ascensores.get(i).getDireccion().equals("sube") && ascensores.get(i).getPisoActual() <= pisoDestino)||
+			(ascensores.get(i).getDireccion().equals("baja")&& ascensores.get(i).getPisoActual() >= pisoDestino) ||
+			(ascensores.get(i).getDireccion().equals("quieto")) ) {
 				
 				aproximandoseAPasajero = true;
 				
@@ -33,13 +36,26 @@ public class Edificio {
 			
 			}
 			
-			if(direccion.equals(ascensor.getDireccion()) || ascensor.getDireccion().equals("quieto")){
+			if(direccion.equals(ascensores.get(i).getDireccion()) || ascensores.get(i).getDireccion().equals("quieto")){
 				mismaDireccion = true;
 			}
 			
-			int distancia = Math.abs(pisoDestino - ascensor.getPisoActual());
-			if(aproximandoseAPasajero && mismaDireccion && (mejorOpcion == -1 || distancia < Math.abs(pisoDestino - )))
+			int distancia = Math.abs(pisoDestino - ascensores.get(i).getPisoActual());
+			if(aproximandoseAPasajero && mismaDireccion && ascensores.get(i).getLleno() && (mejorOpcion == 0 || distancia < Math.abs(pisoDestino - ascensores.get(mejorOpcion).getPisoActual()))) {
+				mejorOpcion = i;
+			}
+			
+			//Fallback
+			
 		}
+		return mejorOpcion;
+	}
+	
+	
+	
+	
+	public ArrayList<Ascensor> getAscesores() {
+		return ascensores;
 	}
 	
 	public void addAscensor(Ascensor ascensor){
