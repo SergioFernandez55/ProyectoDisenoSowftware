@@ -11,4 +11,5 @@ public interface Caja {
 	void addTomateExtra();
 	void finalizarOrden();
 	void generarInforme();
+	Orden getOrden();
 }

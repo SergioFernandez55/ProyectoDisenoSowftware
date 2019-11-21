@@ -27,11 +27,6 @@ public class CajaRestaurante implements Caja {
 		this.orden.addProducto(producto);
 	}
 	
-	public void imprimirFactura() {
-		Facturador factura = new Facturador(this.orden);
-		System.out.println(factura.imprimir() + "\n\n");
-	}
-
 	@Override
 	public void crearNuevaOrden() {
 		this.orden.borrar();
@@ -79,5 +74,10 @@ public class CajaRestaurante implements Caja {
 	@Override
 	public void generarInforme() {
 		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public Orden getOrden() {
+		return this.orden;
 	}
 }

@@ -4,9 +4,6 @@ public class Facturador {
 	
 	private String fecha;
 	
-	public Facturador() {
-	}
-	
 	public String imprimir(Orden orden){
 		
 		StringBuffer buffer = new StringBuffer();

@@ -22,16 +22,16 @@ public class PruebasRestaurante {
 		caja.addProducto(mexicano);
 		caja.addProducto(dobleQueso);
 		
-		caja.imprimirFactura();
+		//caja.imprimirFactura();
 		
 		Memento antesTripleQueso = caja.creaEstado();
 		caja.addProducto(tripleQueso);
 		
-		caja.imprimirFactura();
+		//caja.imprimirFactura();
 		
 		caja.restauraEstado(antesTripleQueso);
 		
-		caja.imprimirFactura();
+		//caja.imprimirFactura();
 	}
 
 }
