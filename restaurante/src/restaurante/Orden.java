@@ -2,6 +2,7 @@ package restaurante;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class Orden {
 
@@ -14,6 +15,9 @@ public class Orden {
 		this.orden.clear();
 	}
 
+	public Set<String> getKeys(){
+		return this.orden.keySet();
+	}
 	public void addProducto(Producto producto) {
 		
 		if (producto != null){ // Refactoring producto nulo.

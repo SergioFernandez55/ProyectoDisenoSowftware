@@ -5,6 +5,7 @@ public interface Caja {
 	void crearNuevaOrden();
 	void addNuevaLineaDePedido();
 	void cancelarUltimaLineaDePedido();
+	void confirmarLineaDePedido();
 	void addSandwichMexicano();
 	void addSandwichItaliano();
 	void addQuesoExtra();

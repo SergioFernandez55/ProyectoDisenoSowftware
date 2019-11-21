@@ -22,10 +22,6 @@ public class CajaRestaurante implements Caja {
 	public void restauraEstado(Memento memento) {
 		this.orden = memento.estado;
 	}
-
-	public void addProducto(Producto producto) {
-		this.orden.addProducto(producto);
-	}
 	
 	@Override
 	public void crearNuevaOrden() {
@@ -37,7 +33,6 @@ public class CajaRestaurante implements Caja {
 	public void addNuevaLineaDePedido() {
 		
 		this.respaldo = this.creaEstado();
-		this.orden.addProducto(this.producto);
 		this.producto = null;
 	}
 
@@ -79,5 +74,10 @@ public class CajaRestaurante implements Caja {
 	@Override
 	public Orden getOrden() {
 		return this.orden;
+	}
+
+	@Override
+	public void confirmarLineaDePedido() {
+		this.orden.addProducto(this.producto);
 	}
 }
