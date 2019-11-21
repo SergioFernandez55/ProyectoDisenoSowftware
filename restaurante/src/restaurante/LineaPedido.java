@@ -1,13 +1,13 @@
 package restaurante;
 
-public class LineaCompra {
+public class LineaPedido {
 	
 	private Producto producto;
 	private int cantidad;
 	private double precio;
 	private String descripcion;
 	
-	public LineaCompra(Producto producto) {
+	public LineaPedido(Producto producto) {
 		this.producto = producto;
 		this.cantidad = 1;
 		this.precio = this.producto.getPrecio();

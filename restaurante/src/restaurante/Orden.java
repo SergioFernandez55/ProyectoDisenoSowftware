@@ -5,19 +5,23 @@ import java.util.Map;
 
 public class Orden {
 
-	private HashMap<Producto, LineaCompra> orden = new HashMap<>();
+	private HashMap<Producto, LineaPedido> orden = new HashMap<>();
 
 	public Orden() {
+	}
+	
+	public void borrar(){
+		this.orden.clear();
 	}
 
 	public void addProducto(Producto producto) {
 
 		if (this.orden.containsKey(producto)) {
-			LineaCompra linea = this.orden.get(producto);
+			LineaPedido linea = this.orden.get(producto);
 			linea.incrementa();
 			this.orden.put(producto, linea);
 		} else {
-			this.orden.put(producto, new LineaCompra(producto));
+			this.orden.put(producto, new LineaPedido(producto));
 		}
 	}
 
@@ -25,7 +29,7 @@ public class Orden {
 
 		double precioTotalOrden = 0.0;
 
-		for (LineaCompra linea : this.orden.values()) {
+		for (LineaPedido linea : this.orden.values()) {
 			precioTotalOrden += linea.getPrecio();
 		}
 
@@ -36,24 +40,24 @@ public class Orden {
 
 		StringBuffer buffer = new StringBuffer();
 
-		for (LineaCompra linea : this.orden.values()) {
+		for (LineaPedido linea : this.orden.values()) {
 			buffer.append("\tDescripcion: " + linea.getDescripcion() + " | Cantidad: " + linea.getCantidad()
 					+ " | Precio: " + linea.getPrecio() + "\n");
 		}
 		return buffer.toString();
 	}
 
-	private Orden(HashMap<Producto, LineaCompra> orden){
+	private Orden(HashMap<Producto, LineaPedido> orden){
 		this.orden = orden;
 	}
 	
 	public Orden clonar() {
 		
-		HashMap<Producto, LineaCompra> copia = new HashMap<>(this.orden.size());
+		HashMap<Producto, LineaPedido> copia = new HashMap<>(this.orden.size());
 		
-		for (Map.Entry<Producto, LineaCompra> entrada : this.orden.entrySet()) {
-			LineaCompra lineaOriginal = entrada.getValue();
-			LineaCompra copiaLinea = new LineaCompra(entrada.getKey());
+		for (Map.Entry<Producto, LineaPedido> entrada : this.orden.entrySet()) {
+			LineaPedido lineaOriginal = entrada.getValue();
+			LineaPedido copiaLinea = new LineaPedido(entrada.getKey());
 			copiaLinea.setCantidad(lineaOriginal.getCantidad());
 			copiaLinea.setDescripcion(lineaOriginal.getDescripcion());
 			copiaLinea.setPrecio(lineaOriginal.getPrecio());

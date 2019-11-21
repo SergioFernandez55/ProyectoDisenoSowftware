@@ -1,11 +1,10 @@
 package restaurante;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class CajaRestaurante implements Caja {
 	
 	private Orden orden = new Orden();
+	private Memento respaldo = null;
+	private Producto producto = null;
 
 	protected class Memento {
 
@@ -35,55 +34,50 @@ public class CajaRestaurante implements Caja {
 
 	@Override
 	public void crearNuevaOrden() {
-		// TODO Auto-generated method stub
-		
+		this.orden.borrar();
+		this.producto = null;
 	}
 
 	@Override
 	public void addNuevaLineaDePedido() {
-		// TODO Auto-generated method stub
 		
+		this.respaldo = this.creaEstado();
+		this.orden.addProducto(this.producto);
+		this.producto = null;
 	}
 
 	@Override
 	public void cancelarUltimaLineaDePedido() {
-		// TODO Auto-generated method stub
-		
+		this.restauraEstado(respaldo);
 	}
 
 	@Override
 	public void addSandwichMexicano() {
-		// TODO Auto-generated method stub
-		
+		this.producto = new SandwichMexicano();
 	}
 
 	@Override
-	public void addSandwichItalian() {
-		// TODO Auto-generated method stub
-		
+	public void addSandwichItaliano() {
+		this.producto = new SandwichItaliano();
 	}
 
 	@Override
 	public void addQuesoExtra() {
-		// TODO Auto-generated method stub
-		
+		this.producto = new ConQueso(this.producto);
 	}
 
 	@Override
 	public void addTomateExtra() {
-		// TODO Auto-generated method stub
-		
+		this.producto = new ConTomate(this.producto);
 	}
 
 	@Override
 	public void finalizarOrden() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void generarInforme() {
 		// TODO Auto-generated method stub
-		
 	}
 }
