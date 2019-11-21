@@ -28,7 +28,7 @@ public class CajaRestaurante implements Caja {
 	}
 	
 	public void imprimirFactura() {
-		Factura factura = new Factura(this.orden);
+		Facturador factura = new Facturador(this.orden);
 		System.out.println(factura.imprimir() + "\n\n");
 	}
 
