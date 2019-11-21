@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.*;
 import java.util.Vector;
 import java.util.HashMap;
 public class Ascensor {
@@ -6,7 +7,7 @@ public class Ascensor {
 	private String direccionActual = "quieto";
 	private int pisoActual;
 	//private Vector<Pair<Integer, Integer>> listaDestinos = new ArrayList<Integer>();
-	private HashMap<Integer, Integer> listaDestinos = new HashMap<Integer, Integer>();
+	private ArrayList<Integer> listaDestinos = new ArrayList<Integer>();
 	private int pisoDestino = 1;
 	private int maxPasajeros;
 	private int pesoActual;
@@ -101,12 +102,32 @@ public class Ascensor {
 		--cantidadPasajeros;
 	}
 	
-	/*public int getCantidadParadas() {
-		
-		for(int pisos :) {
-			listaDestinos.get()
+	public int getCantidadParadas() {
+		return listaDestinos.size();
+	}
+	
+	public void addParada(Integer piso) {
+		if (!listaDestinos.contains(piso)) {
+			listaDestinos.add(piso);
 		}
-		
-	}*/
+	}
+	private void quitarParada(Integer piso) {
+		Iterator<Integer> destinosIterator = listaDestinos.iterator();
+		while(destinosIterator.hasNext()) {
+			if(destinosIterator.next() == piso) {
+				destinosIterator.remove();
+				break;
+			}		
+		}
+	}
+	public void subir() {
+		direccionActual = "sube";
+	}
+	public void bajar() {
+		direccionActual = "baja";
+	}
+	public void detener() {
+		direccionActual = "quieto";
+	}
 	
 }
