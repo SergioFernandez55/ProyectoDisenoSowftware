@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Orden {
 
-	private HashMap<Producto, LineaPedido> orden = new HashMap<>();
+	private HashMap<String, LineaPedido> orden = new HashMap<>();
 
 	public Orden() {
 	}
@@ -19,9 +19,9 @@ public class Orden {
 		if (this.orden.containsKey(producto)) {
 			LineaPedido linea = this.orden.get(producto);
 			linea.incrementa();
-			this.orden.put(producto, linea);
+			this.orden.put(producto.getDescripcion(), linea);
 		} else {
-			this.orden.put(producto, new LineaPedido(producto));
+			this.orden.put(producto.getDescripcion(), new LineaPedido(producto));
 		}
 	}
 
@@ -47,20 +47,23 @@ public class Orden {
 		return buffer.toString();
 	}
 
-	private Orden(HashMap<Producto, LineaPedido> orden){
+	private Orden(HashMap<String, LineaPedido> orden){
 		this.orden = orden;
 	}
 	
 	public Orden clonar() {
 		
-		HashMap<Producto, LineaPedido> copia = new HashMap<>(this.orden.size());
+		HashMap<String, LineaPedido> copia = new HashMap<>(this.orden.size());
 		
-		for (Map.Entry<Producto, LineaPedido> entrada : this.orden.entrySet()) {
+		for (Map.Entry<String, LineaPedido> entrada : this.orden.entrySet()) {
+			
 			LineaPedido lineaOriginal = entrada.getValue();
-			LineaPedido copiaLinea = new LineaPedido(entrada.getKey());
+			LineaPedido copiaLinea = new LineaPedido(lineaOriginal.getProducto());
+			
 			copiaLinea.setCantidad(lineaOriginal.getCantidad());
 			copiaLinea.setDescripcion(lineaOriginal.getDescripcion());
 			copiaLinea.setPrecio(lineaOriginal.getPrecio());
+			
 			copia.put(entrada.getKey(), copiaLinea);
 		}
 		
