@@ -15,13 +15,15 @@ public class Orden {
 	}
 
 	public void addProducto(Producto producto) {
-
-		if (this.orden.containsKey(producto)) {
-			LineaPedido linea = this.orden.get(producto);
-			linea.incrementa();
-			this.orden.put(producto.getDescripcion(), linea);
-		} else {
-			this.orden.put(producto.getDescripcion(), new LineaPedido(producto));
+		
+		if (producto != null){ // Refactoring producto nulo.
+			if (this.orden.containsKey(producto.getDescripcion())) {
+				LineaPedido linea = this.orden.get(producto.getDescripcion());
+				linea.incrementa();
+				this.orden.put(producto.getDescripcion(), linea);
+			} else {
+				this.orden.put(producto.getDescripcion(), new LineaPedido(producto));
+			}
 		}
 	}
 

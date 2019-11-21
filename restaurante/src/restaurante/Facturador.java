@@ -4,7 +4,7 @@ public class Facturador {
 	
 	private String fecha;
 	
-	public String imprimir(Orden orden){
+	public void imprimir(Orden orden){
 		
 		StringBuffer buffer = new StringBuffer();
 		
@@ -19,7 +19,7 @@ public class Facturador {
 				"**************************************************\n" 
 		);
 		
-		return buffer.toString();
+		System.out.println(buffer.toString());
 	}
 
 	public String getFecha() {

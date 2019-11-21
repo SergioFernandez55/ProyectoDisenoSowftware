@@ -68,14 +68,14 @@ public class CajaRestaurante implements Caja {
 
 	@Override
 	public void finalizarOrden() {
-		// TODO Auto-generated method stub
+		this.orden.addProducto(this.producto);
 	}
 
 	@Override
 	public void generarInforme() {
 		// TODO Auto-generated method stub
 	}
-
+	
 	@Override
 	public Orden getOrden() {
 		return this.orden;
