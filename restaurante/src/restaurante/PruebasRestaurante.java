@@ -2,48 +2,57 @@ package restaurante;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import restaurante.CajaRestaurante.Memento;
 
 public class PruebasRestaurante {
 
+	private Caja caja;
+	private Facturador facturador;
+
+	@Before
+	public void init() {
+		this.caja = new CajaRestaurante();
+		this.facturador = new Facturador();
+	}
+
 	@Test
-	public void test() {
+	public void validarCalculoDelPrecio() {
 		
-		Caja caja = new CajaRestaurante();
-		Facturador facturador = new Facturador();
-		
-		caja.crearNuevaOrden();
-		
-		caja.addNuevaLineaDePedido();
-		caja.addSandwichItaliano();
-		caja.addQuesoExtra();
-		caja.addQuesoExtra();
-		caja.addQuesoExtra();
-		caja.addTomateExtra();
-		
-		caja.addNuevaLineaDePedido();
-		caja.addSandwichItaliano();
-		caja.addQuesoExtra();
-		caja.addQuesoExtra();
-		caja.addQuesoExtra();
-		caja.addTomateExtra();
-		
-		caja.addNuevaLineaDePedido();
-		caja.addSandwichMexicano();
-		caja.addQuesoExtra();
-		caja.addTomateExtra();
-		
-		caja.addNuevaLineaDePedido();
-		caja.addSandwichItaliano();
-		caja.addTomateExtra();
-		
-		caja.addNuevaLineaDePedido();
-		caja.addSandwichMexicano();
-		
-		caja.finalizarOrden();
+		this.caja.crearNuevaOrden();
+
+		this.caja.addNuevaLineaDePedido();
+		this.caja.addSandwichItaliano();
+		this.caja.addQuesoExtra();
+		this.caja.addQuesoExtra();
+		this.caja.addQuesoExtra();
+		this.caja.addTomateExtra();
+
+		this.caja.addNuevaLineaDePedido();
+		this.caja.addSandwichItaliano();
+		this.caja.addQuesoExtra();
+		this.caja.addQuesoExtra();
+		this.caja.addQuesoExtra();
+		this.caja.addTomateExtra();
+
+		this.caja.addNuevaLineaDePedido();
+		this.caja.addSandwichMexicano();
+		this.caja.addQuesoExtra();
+		this.caja.addTomateExtra();
+
+		this.caja.addNuevaLineaDePedido();
+		this.caja.addSandwichItaliano();
+		this.caja.addTomateExtra();
+
+		this.caja.addNuevaLineaDePedido();
+		this.caja.addSandwichMexicano();
+
+		this.caja.finalizarOrden();
 		
 		facturador.imprimir(caja.getOrden());
+		
+		assertTrue(this.caja.getOrden().getPrecioTotal() == 35.25);
 	}
 }
