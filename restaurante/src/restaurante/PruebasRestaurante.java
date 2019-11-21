@@ -4,14 +4,14 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import restaurante.Caja.Memento;
+import restaurante.CajaRestaurante.Memento;
 
 public class PruebasRestaurante {
 
 	@Test
 	public void test() {
 		
-		Caja caja = new Caja();
+		CajaRestaurante caja = new CajaRestaurante();
 		
 		Producto italiano = new SandwichItaliano();
 		Producto mexicano = new SandwichMexicano();
