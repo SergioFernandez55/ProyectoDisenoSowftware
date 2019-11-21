@@ -73,10 +73,12 @@ public class PruebasRestaurante {
 		this.caja.addQuesoExtra();
 		this.caja.confirmarLineaDePedido();
 
+		System.out.println("Antes de cancelar la ultima linea:\n");
 		facturador.imprimir(caja.getOrden());
 
 		this.caja.cancelarUltimaLineaDePedido();
 		
+		System.out.println("Despues de cancelar la ultima linea:\n");
 		facturador.imprimir(caja.getOrden());
 
 		Set<String> keys = caja.getOrden().getKeys();
