@@ -51,17 +51,20 @@ public class DespachadorDePiso {
 					}else {
 						costoAscensor = calculadorTiempos(pisoDestino, ascensorTemporal);
 						if(costoMinimo < costoAscensor) {
-							costoMinimo = costoAscensor;
+							costoMinimo = ascensorTemporal.getIdentificador();
 						}
 					}
 				}
 			}		
-		return ascensorElecto;
 		
+		}
+		return ascensorElecto;
 	}
 	
 	
-	
+	public  ArrayList<Ascensor> getListaAscensores(){
+		return ascensores;
+	}
 	
 	/*
 	//agregar restricciones

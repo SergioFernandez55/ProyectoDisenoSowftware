@@ -20,22 +20,34 @@ public class Ascensor {
 	public static class Builder {
 		private Ascensor ascensor;
 		
-		public Ascensor build() {
-			return ascensor;
+		public Builder(){
+			ascensor = new Ascensor();
+		}
+	
+		public Builder setID(int ID) {
+			ascensor.identificador = ID;
+			return this;
 		}
 		
-		public void setMaxPasajeros(int maxPasajeros) {
+		public Builder setMaxPasajeros(int maxPasajeros) {
 			ascensor.maxPasajeros = maxPasajeros;
+			return this;
 		}
 
-		public void setDireccion(String direccion) {
+		public Builder setDireccion(String direccion) {
 			ascensor.direccionActual = direccion;
+			return this;
 		}
 		
-		public void setPisoActual(int piso) {
+		public Builder setPisoActual(int piso) {
 			ascensor.pisoActual = piso;
+			return this;
 		}
-}
+		
+		public Ascensor build() {
+			return this.ascensor;
+		}
+	}
 	
 	public static class BuilderAscensorPersonas {
 		private Ascensor ascensor;
@@ -82,9 +94,16 @@ public class Ascensor {
 		
 	}
 	
+	int getIdentificador() {
+		return identificador;
+	}
 	
 	public int getPisoActual() {
 		return pisoActual;
+	}
+	
+	public int getPasajeros() {
+		return cantidadPasajeros;
 	}
 	
 	public String getDireccion() {
