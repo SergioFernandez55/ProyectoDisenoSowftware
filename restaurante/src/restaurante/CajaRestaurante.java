@@ -2,6 +2,9 @@ package restaurante;
 
 public class CajaRestaurante implements Caja {
 	
+	SandwichFactory factoryMexicano = new SandwichMexicanoFactory();
+	SandwichFactory factoryItaliano = new SandwichItalianoFactory();
+	
 	private Orden orden = new Orden();
 	private Memento respaldo = null;
 	private Producto producto = null;
@@ -44,12 +47,12 @@ public class CajaRestaurante implements Caja {
 
 	@Override
 	public void addSandwichMexicano() {
-		this.producto = new SandwichMexicano();
+		this.producto = factoryMexicano.crea();
 	}
 
 	@Override
 	public void addSandwichItaliano() {
-		this.producto = new SandwichItaliano();
+		this.producto = factoryItaliano.crea();
 	}
 
 	@Override
