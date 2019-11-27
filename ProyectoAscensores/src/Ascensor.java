@@ -13,6 +13,7 @@ public class Ascensor {
 	private int pesoActual;
 	private int pesoMax;
 	private int cantidadPasajeros = 0;
+	private String tipo;
 	
 	
 	private Ascensor() {}
@@ -54,10 +55,12 @@ public class Ascensor {
 		
 		public BuilderAscensorPersonas(Ascensor ascensor) {
 			this.ascensor = ascensor;
+			this.ascensor.tipo = "Pasajeros";
 		}
 		
-		public void setMaxPasajeros(int maxPasajeros) {
+		public BuilderAscensorPersonas setMaxPasajeros(int maxPasajeros) {
 			ascensor.maxPasajeros = maxPasajeros;
+			return this;
 		}
 		
 		public Ascensor build() {
@@ -70,6 +73,7 @@ public class Ascensor {
 		
 		public BuilderAscensorCarga(Ascensor ascensor) {
 			this.ascensor = ascensor;
+			this.ascensor.tipo = "Carga";
 		}
 		
 		public void setMaxCarga(int carga) {
@@ -92,6 +96,10 @@ public class Ascensor {
 			return false;
 		}
 		
+	}
+	
+	public String getTipo() {
+		return tipo;
 	}
 	
 	int getIdentificador() {

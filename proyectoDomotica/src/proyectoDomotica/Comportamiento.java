@@ -7,13 +7,6 @@ public class Comportamiento {
 	MediadorDispositivosInteligentes mediador;
 	boolean activar;
 	
-	
-	public Comportamiento (DispositivoInteligente emisor, Actuador receptor, boolean activo){
-		this.emisor = emisor;
-		this.receptor = receptor;
-		this.activar = activo;
-	}
-	
 	public Comportamiento (	MediadorDispositivosInteligentes mediador){
 		this.mediador = mediador;
 	}
