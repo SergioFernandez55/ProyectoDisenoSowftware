@@ -87,26 +87,23 @@ public class PruebasRestaurante {
 	}
 	
 	@Test
-	public void validarAutoguardadoDeOrden() {
+	public void validarCreaEstadoMemento() {
 	
 		String llave = "Mexicano Basico + Tomate Adicional";
 		
-		// Construcción manual de orden.
 		Producto sandwich = new ConTomate((new SandwichMexicano()));
 		LineaPedido linea = new LineaPedido(sandwich);
 		
-		// Construcción por intefaz de orden.
 		this.caja.addSandwichMexicano();
 		this.caja.addTomateExtra();
 		this.caja.confirmarLineaDePedido();
 		
 		this.caja.addSandwichItaliano();
-		this.caja.confirmarLineaDePedido(); // Crea respaldo de línea de pedido anterior (Sandwich Mexicano con queso).
+		this.caja.confirmarLineaDePedido();
 		
 		String descripcionLineaRespaldo = this.caja.getOrden().getLineaProducto(llave).getDescripcion();
-		String descripcionLineaManual = linea.getDescripcion();
 		
-		assertEquals(descripcionLineaManual, descripcionLineaRespaldo);
+		assertEquals(linea.getDescripcion(), descripcionLineaRespaldo);
 	}
 
 }
