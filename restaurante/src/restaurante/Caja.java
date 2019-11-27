@@ -13,4 +13,7 @@ public interface Caja {
 	void finalizarOrden();
 	void generarInforme();
 	Orden getOrden();
+	
+	// Métodos utilizados en pruebas.
+	Orden getRespaldoDeOrden();
 }

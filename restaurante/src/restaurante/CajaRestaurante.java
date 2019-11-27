@@ -27,12 +27,13 @@ public class CajaRestaurante implements Caja {
 	public void crearNuevaOrden() {
 		this.orden.borrar();
 		this.producto = null;
+		this.respaldo = null;
 	}
 
 	@Override
 	public void addNuevaLineaDePedido() {
 		
-		this.respaldo = this.creaEstado();
+		//this.respaldo = this.creaEstado();
 		this.producto = null;
 	}
 
@@ -78,6 +79,13 @@ public class CajaRestaurante implements Caja {
 
 	@Override
 	public void confirmarLineaDePedido() {
+		this.respaldo = this.creaEstado();
 		this.orden.addProducto(this.producto);
 	}
+
+	@Override
+	public Orden getRespaldoDeOrden() {
+		return this.respaldo.estado;
+	}
+	
 }

@@ -85,5 +85,28 @@ public class PruebasRestaurante {
 		assertEquals(1, keys.size());
 		assertTrue("Italiano Basico + Queso Adicional + Queso Adicional + Tomate Adicional", keys.contains("Italiano Basico + Queso Adicional + Queso Adicional + Tomate Adicional"));
 	}
+	
+	@Test
+	public void validarAutoguardadoDeOrden() {
+	
+		String llave = "Mexicano Basico + Tomate Adicional";
+		
+		// Construcción manual de orden.
+		Producto sandwich = new ConTomate((new SandwichMexicano()));
+		LineaPedido linea = new LineaPedido(sandwich);
+		
+		// Construcción por intefaz de orden.
+		this.caja.addSandwichMexicano();
+		this.caja.addTomateExtra();
+		this.caja.confirmarLineaDePedido();
+		
+		this.caja.addSandwichItaliano();
+		this.caja.confirmarLineaDePedido(); // Crea respaldo de línea de pedido anterior (Sandwich Mexicano con queso).
+		
+		String descripcionLineaRespaldo = this.caja.getOrden().getLineaProducto(llave).getDescripcion();
+		String descripcionLineaManual = linea.getDescripcion();
+		
+		assertEquals(descripcionLineaManual, descripcionLineaRespaldo);
+	}
 
 }
