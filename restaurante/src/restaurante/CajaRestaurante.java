@@ -15,11 +15,11 @@ public class CajaRestaurante implements Caja {
 		}
 	}
 	
-	public Memento creaEstado() {
+	private Memento creaEstado() {
 		return new Memento(this.orden);
 	}
 	
-	public void restauraEstado(Memento memento) {
+	private void restauraEstado(Memento memento) {
 		this.orden = memento.estado;
 	}
 	
