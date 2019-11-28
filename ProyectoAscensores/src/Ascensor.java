@@ -13,8 +13,8 @@ public class Ascensor {
 	private int pesoActual;
 	private int pesoMax;
 	private int cantidadPasajeros = 0;
-	private String tipo;
-	
+	private TipoAscensor tipo;
+		
 	
 	private Ascensor() {}
 	
@@ -55,7 +55,7 @@ public class Ascensor {
 		
 		public BuilderAscensorPersonas(Ascensor ascensor) {
 			this.ascensor = ascensor;
-			this.ascensor.tipo = "Pasajeros";
+			this.ascensor.tipo = TipoAscensor.PASAJEROS;
 		}
 		
 		public BuilderAscensorPersonas setMaxPasajeros(int maxPasajeros) {
@@ -73,7 +73,7 @@ public class Ascensor {
 		
 		public BuilderAscensorCarga(Ascensor ascensor) {
 			this.ascensor = ascensor;
-			this.ascensor.tipo = "Carga";
+			this.ascensor.tipo = TipoAscensor.CARGA;
 		}
 		
 		public void setMaxCarga(int carga) {
@@ -85,20 +85,8 @@ public class Ascensor {
 		}
 	}
 
-	//int identificador, int pisoActual, int maxPasajeros
 	
-	
-	public boolean getLleno() {
-		if((cantidadPasajeros) > maxPasajeros) {
-			return true;
-		}
-		else {
-			return false;
-		}
-		
-	}
-	
-	public String getTipo() {
+	public TipoAscensor getTipo() {
 		return tipo;
 	}
 	
@@ -118,17 +106,6 @@ public class Ascensor {
 		return direccionActual;
 	}
 	
-	public int getMaxPasajeros() {
-		return this.maxPasajeros;
-	}
-	
-	public void agregarPasajero() {
-		++cantidadPasajeros;
-	}
-	public void bajaPasajero() {
-		--cantidadPasajeros;
-	}
-	
 	public int getCantidadParadas() {
 		return listaDestinos.size();
 	}
@@ -138,15 +115,7 @@ public class Ascensor {
 			listaDestinos.add(piso);
 		}
 	}
-	private void quitarParada(Integer piso) {
-		Iterator<Integer> destinosIterator = listaDestinos.iterator();
-		while(destinosIterator.hasNext()) {
-			if(destinosIterator.next() == piso) {
-				destinosIterator.remove();
-				break;
-			}		
-		}
-	}
+
 	public void subir() {
 		direccionActual = "sube";
 	}

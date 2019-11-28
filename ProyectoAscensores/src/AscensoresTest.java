@@ -10,12 +10,11 @@ class AscensoresTest {
 		Ascensor ascensor;
 
 		ascensor = new Ascensor.Builder()
-				.setMaxPasajeros(3)
 				.setPisoActual(1)
 				.setDireccion("quieto")
 				.build();
 		
-		assertEquals(ascensor.getMaxPasajeros(),3);
+		assertEquals(ascensor.getPisoActual(),1);
 	
 		
 		DespachadorDePiso despachador = new DespachadorDePiso(10, 2, 4);
@@ -50,12 +49,9 @@ class AscensoresTest {
 		assertEquals((despachador.getListaAscensores().get(1).getIdentificador()),2);
 		assertEquals((despachador.getListaAscensores().get(2).getIdentificador()),3);
 
-		assertEquals(despachador.llamarAscensor(3, 9), 0);
+		assertEquals(despachador.llamarAscensor(3, 9, TipoAscensor.CARGA), 0);
 		
 	}
 }
 
-//ID ascensores no es unico
-// Tenemos que meter restricciones ascensor
-//Nos falta el caso que la cantidad de pisos y paradas afecten
 
