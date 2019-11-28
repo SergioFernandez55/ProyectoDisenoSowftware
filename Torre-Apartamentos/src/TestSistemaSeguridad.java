@@ -23,6 +23,11 @@ public class TestSistemaSeguridad {
 	@Before
 	public void init() {
 		
+		// --- Decorador del sistema de accesos ---
+		this.registro = new Registro();
+		this.sistemaAccesos = new SistemaAccesosEdificio();
+		this.decoradorSistemaAccesos = new DecoradorSistemaAccesos(this.sistemaAccesos);
+		
 		this.accesoInternet = new AccesoInternet();
 		this.bitacora = new Bitacora();
 		this.proxyAccesoInternet = new ProxyAccesoInternet(this.accesoInternet);
@@ -83,16 +88,17 @@ public class TestSistemaSeguridad {
 	@Test
 	public void validacionBloqueoPorSitioWebEnListaNegra(){
 		
-		final int CANTIDAD_MAXIMA_ACCESOS = 5;
+		final int CANTIDAD_MAXIMA_ACCESOS = 2;
 		
 		this.proxyAccesoInternet.agregarSitioWebAListaNegra("www.netflix.com");
 		
-		// Intento de acceso a sitio web no bloqueado.
-		SitioWeb sitio = this.decoradorAccesoInternet.accederSitio("116870476", "www.ecci.ucr.ac.cr", CANTIDAD_MAXIMA_ACCESOS);
-		assertFalse("Sitio accedido: www.ecci.ucr.ac.cr", sitio.esNulo());
-		
 		// Intento de accesso a sitio web bloqueado.
-		sitio = this.decoradorAccesoInternet.accederSitio("116870476", "www.netflix.com", CANTIDAD_MAXIMA_ACCESOS);
+		SitioWeb sitio = this.decoradorAccesoInternet.accederSitio("116870476", "www.netflix.com", CANTIDAD_MAXIMA_ACCESOS);
 		assertTrue("Sitio accedido: www.netflix.com", sitio.esNulo());
+	}
+	
+	@Test
+	public void validacionDecoradorSistemaAccesos() {
+		
 	}
 }
