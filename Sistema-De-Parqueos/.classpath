@@ -4,5 +4,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="Vehiculos"/>
 	<classpathentry kind="src" path="Fabricas de Vehiculos"/>
+	<classpathentry kind="src" path="Parqueo"/>
+	<classpathentry kind="src" path="Espacios"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
