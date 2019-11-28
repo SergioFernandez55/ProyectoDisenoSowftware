@@ -1,4 +1,8 @@
 import static org.junit.Assert.*;
+
+import java.awt.List;
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,6 +14,7 @@ public class TestSistemaSeguridad {
 	Registro registro;
 	SistemaAccesos sistemaAccesos;
 	DecoradorSistemaAccesos decoradorSistemaAccesos;
+	Tarjeta tarjeta;
 	
 	// --- Decorador del proxy de internet ---
 	Internet accesoInternet;
@@ -22,6 +27,13 @@ public class TestSistemaSeguridad {
 	
 	@Before
 	public void init() {
+		
+		// --- Decorador del sistema de accesos ---
+		this.registro = new Registro();
+		this.sistemaAccesos = new SistemaAccesosEdificio();
+		this.decoradorSistemaAccesos = new DecoradorSistemaAccesos(this.sistemaAccesos);
+		this.decoradorSistemaAccesos.setRegistro(registro);
+		this.tarjeta = new Tarjeta("116870476");
 		
 		this.accesoInternet = new AccesoInternet();
 		this.bitacora = new Bitacora();
@@ -45,7 +57,7 @@ public class TestSistemaSeguridad {
 	@Test
 	public void validacionEstadoCamarasLuegoComando(){
 		
-		// Estado inicial de las cámaras.
+		// Estado inicial de las cï¿½maras.
 		System.out.println("Estado inicial de las camaras:\n");
 		this.sistemaSeguridad.revisarEstadoCamaras();
 		
@@ -73,34 +85,47 @@ public class TestSistemaSeguridad {
 	@Test
 	public void validacionBloqueoInternetPorCantidadMaximaSitios() {
 		
-		final int CANTIDAD_MAXIMA_ACCESOS = 2;
+		final int CANTIDAD_MAXIMA_ACCESOS = 0;
 		
 		// Intento de primer acceso.
 		SitioWeb sitio = this.decoradorAccesoInternet.accederSitio("116870476", "www.ecci.ucr.ac.cr", CANTIDAD_MAXIMA_ACCESOS);
-		assertFalse("Sitio accedido: www.ecci.ucr.ac.cr", sitio.esNulo());
-		
-		// Intento de segundo acceso.
-		sitio = this.decoradorAccesoInternet.accederSitio("116870476", "www.youtube.com", CANTIDAD_MAXIMA_ACCESOS);
-		assertFalse("Sitio accedido: www.youtube.com", sitio.esNulo());
-		
-		// Intento de tercer acceso.
-		sitio = this.decoradorAccesoInternet.accederSitio("116870476", "www.netflix.com", CANTIDAD_MAXIMA_ACCESOS);
-		assertTrue("Sitio accedido: www.netflix.com", sitio.esNulo());
+		assertTrue("Sitio accedido: www.ecci.ucr.ac.cr", sitio.esNulo());
 	}
 	
 	@Test
 	public void validacionBloqueoPorSitioWebEnListaNegra(){
 		
-		final int CANTIDAD_MAXIMA_ACCESOS = 5;
+		final int CANTIDAD_MAXIMA_ACCESOS = 2;
 		
 		this.proxyAccesoInternet.agregarSitioWebAListaNegra("www.netflix.com");
 		
-		// Intento de acceso a sitio web no bloqueado.
-		SitioWeb sitio = this.decoradorAccesoInternet.accederSitio("116870476", "www.ecci.ucr.ac.cr", CANTIDAD_MAXIMA_ACCESOS);
-		assertFalse("Sitio accedido: www.ecci.ucr.ac.cr", sitio.esNulo());
-		
 		// Intento de accesso a sitio web bloqueado.
-		sitio = this.decoradorAccesoInternet.accederSitio("116870476", "www.netflix.com", CANTIDAD_MAXIMA_ACCESOS);
+		SitioWeb sitio = this.decoradorAccesoInternet.accederSitio("116870476", "www.netflix.com", CANTIDAD_MAXIMA_ACCESOS);
 		assertTrue("Sitio accedido: www.netflix.com", sitio.esNulo());
+	}
+	
+	@Test
+	public void validacionEntradaEnElRegistro() {
+		
+		this.decoradorSistemaAccesos.entrarAlEdificio(this.tarjeta);
+		ArrayList<String> registroDelSistema = (ArrayList<String>) this.registro.obtener();
+		String registroDelCliente = registroDelSistema.get(0);
+		System.out.println(registroDelCliente + "\n");
+		
+		assertTrue(registroDelCliente.contains(this.tarjeta.getNumero()));
+		assertTrue(registroDelCliente.contains("Entrada"));
+	}
+	
+	
+	@Test
+	public void validacionRegistroDeSalidaDelEdificio() {
+		
+		this.decoradorSistemaAccesos.salirDelEdificio(this.tarjeta);
+		ArrayList<String> registroDelSistema = (ArrayList<String>) this.registro.obtener();
+		String registroDelCliente = registroDelSistema.get(0);
+		System.out.println(registroDelCliente + "\n");
+		
+		assertTrue(registroDelCliente.contains(this.tarjeta.getNumero()));
+		assertTrue(registroDelCliente.contains("Salida"));
 	}
 }

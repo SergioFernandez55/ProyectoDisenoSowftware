@@ -2,6 +2,9 @@ package restaurante;
 
 public class CajaRestaurante implements Caja {
 	
+	SandwichFactory factoryMexicano = new SandwichMexicanoFactory();
+	SandwichFactory factoryItaliano = new SandwichItalianoFactory();
+	
 	private Orden orden = new Orden();
 	private Memento respaldo = null;
 	private Producto producto = null;
@@ -15,11 +18,11 @@ public class CajaRestaurante implements Caja {
 		}
 	}
 	
-	public Memento creaEstado() {
+	private Memento creaEstado() {
 		return new Memento(this.orden);
 	}
 	
-	public void restauraEstado(Memento memento) {
+	private void restauraEstado(Memento memento) {
 		this.orden = memento.estado;
 	}
 	
@@ -27,12 +30,13 @@ public class CajaRestaurante implements Caja {
 	public void crearNuevaOrden() {
 		this.orden.borrar();
 		this.producto = null;
+		this.respaldo = null;
 	}
 
 	@Override
 	public void addNuevaLineaDePedido() {
 		
-		this.respaldo = this.creaEstado();
+		//this.respaldo = this.creaEstado();
 		this.producto = null;
 	}
 
@@ -43,12 +47,12 @@ public class CajaRestaurante implements Caja {
 
 	@Override
 	public void addSandwichMexicano() {
-		this.producto = new SandwichMexicano();
+		this.producto = factoryMexicano.crea();
 	}
 
 	@Override
 	public void addSandwichItaliano() {
-		this.producto = new SandwichItaliano();
+		this.producto = factoryItaliano.crea();
 	}
 
 	@Override
@@ -65,11 +69,6 @@ public class CajaRestaurante implements Caja {
 	public void finalizarOrden() {
 		this.orden.addProducto(this.producto);
 	}
-
-	@Override
-	public void generarInforme() {
-		// TODO Auto-generated method stub
-	}
 	
 	@Override
 	public Orden getOrden() {
@@ -78,6 +77,13 @@ public class CajaRestaurante implements Caja {
 
 	@Override
 	public void confirmarLineaDePedido() {
+		this.respaldo = this.creaEstado();
 		this.orden.addProducto(this.producto);
 	}
+
+	@Override
+	public Orden getRespaldoDeOrden() {
+		return this.respaldo.estado;
+	}
+	
 }

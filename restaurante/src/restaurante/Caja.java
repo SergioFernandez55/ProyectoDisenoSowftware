@@ -11,6 +11,8 @@ public interface Caja {
 	void addQuesoExtra();
 	void addTomateExtra();
 	void finalizarOrden();
-	void generarInforme();
 	Orden getOrden();
+	
+	// Métodos utilizados en pruebas.
+	Orden getRespaldoDeOrden();
 }

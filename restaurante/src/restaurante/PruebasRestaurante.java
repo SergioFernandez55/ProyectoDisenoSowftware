@@ -85,5 +85,25 @@ public class PruebasRestaurante {
 		assertEquals(1, keys.size());
 		assertTrue("Italiano Basico + Queso Adicional + Queso Adicional + Tomate Adicional", keys.contains("Italiano Basico + Queso Adicional + Queso Adicional + Tomate Adicional"));
 	}
+	
+	@Test
+	public void validarCreaEstadoMemento() {
+	
+		String llave = "Mexicano Basico + Tomate Adicional";
+		
+		Producto sandwich = new ConTomate((new SandwichMexicano()));
+		LineaPedido linea = new LineaPedido(sandwich);
+		
+		this.caja.addSandwichMexicano();
+		this.caja.addTomateExtra();
+		this.caja.confirmarLineaDePedido();
+		
+		this.caja.addSandwichItaliano();
+		this.caja.confirmarLineaDePedido();
+		
+		String descripcionLineaRespaldo = this.caja.getOrden().getLineaProducto(llave).getDescripcion();
+		
+		assertEquals(linea.getDescripcion(), descripcionLineaRespaldo);
+	}
 
 }

@@ -2,8 +2,6 @@ package restaurante;
 
 public class Facturador {
 	
-	private String fecha;
-	
 	public void imprimir(Orden orden){
 		
 		StringBuffer buffer = new StringBuffer();
@@ -20,13 +18,5 @@ public class Facturador {
 		);
 		
 		System.out.println(buffer.toString());
-	}
-
-	public String getFecha() {
-		return fecha;
-	}
-	
-	public void setFecha(String fecha) {
-		this.fecha = fecha;
 	}
 }

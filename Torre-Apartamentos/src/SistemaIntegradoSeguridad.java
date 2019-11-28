@@ -17,7 +17,7 @@ public class SistemaIntegradoSeguridad implements Serializable, SistemaSeguridad
 	private SistemaIntegradoSeguridad() {
 		
 		this.centroControlCamaras = new CentroControlCamaras();
-		this.sistemaAccesos = new SistemaAccesosTorre();
+		this.sistemaAccesos = new SistemaAccesosEdificio();
 		this.decoradorSistemaAccesos = new DecoradorSistemaAccesos(sistemaAccesos);
 		this.decoradorSistemaAccesos.setRegistro(new Registro());
 		this.decoradorProxyInternet = new DecoradorProxyAccesoInternet(new ProxyAccesoInternet(new AccesoInternet()));
