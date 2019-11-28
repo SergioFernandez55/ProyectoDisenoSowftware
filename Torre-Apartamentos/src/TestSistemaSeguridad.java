@@ -45,7 +45,7 @@ public class TestSistemaSeguridad {
 	@Test
 	public void validacionEstadoCamarasLuegoComando(){
 		
-		// Estado inicial de las cámaras.
+		// Estado inicial de las cï¿½maras.
 		System.out.println("Estado inicial de las camaras:\n");
 		this.sistemaSeguridad.revisarEstadoCamaras();
 		
@@ -73,19 +73,11 @@ public class TestSistemaSeguridad {
 	@Test
 	public void validacionBloqueoInternetPorCantidadMaximaSitios() {
 		
-		final int CANTIDAD_MAXIMA_ACCESOS = 2;
+		final int CANTIDAD_MAXIMA_ACCESOS = 0;
 		
 		// Intento de primer acceso.
 		SitioWeb sitio = this.decoradorAccesoInternet.accederSitio("116870476", "www.ecci.ucr.ac.cr", CANTIDAD_MAXIMA_ACCESOS);
-		assertFalse("Sitio accedido: www.ecci.ucr.ac.cr", sitio.esNulo());
-		
-		// Intento de segundo acceso.
-		sitio = this.decoradorAccesoInternet.accederSitio("116870476", "www.youtube.com", CANTIDAD_MAXIMA_ACCESOS);
-		assertFalse("Sitio accedido: www.youtube.com", sitio.esNulo());
-		
-		// Intento de tercer acceso.
-		sitio = this.decoradorAccesoInternet.accederSitio("116870476", "www.netflix.com", CANTIDAD_MAXIMA_ACCESOS);
-		assertTrue("Sitio accedido: www.netflix.com", sitio.esNulo());
+		assertTrue("Sitio accedido: www.ecci.ucr.ac.cr", sitio.esNulo());
 	}
 	
 	@Test
