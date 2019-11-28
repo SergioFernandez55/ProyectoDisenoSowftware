@@ -1,4 +1,8 @@
 import static org.junit.Assert.*;
+
+import java.awt.List;
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,6 +14,7 @@ public class TestSistemaSeguridad {
 	Registro registro;
 	SistemaAccesos sistemaAccesos;
 	DecoradorSistemaAccesos decoradorSistemaAccesos;
+	Tarjeta tarjeta;
 	
 	// --- Decorador del proxy de internet ---
 	Internet accesoInternet;
@@ -27,6 +32,8 @@ public class TestSistemaSeguridad {
 		this.registro = new Registro();
 		this.sistemaAccesos = new SistemaAccesosEdificio();
 		this.decoradorSistemaAccesos = new DecoradorSistemaAccesos(this.sistemaAccesos);
+		this.decoradorSistemaAccesos.setRegistro(registro);
+		this.tarjeta = new Tarjeta("116870476");
 		
 		this.accesoInternet = new AccesoInternet();
 		this.bitacora = new Bitacora();
@@ -98,7 +105,27 @@ public class TestSistemaSeguridad {
 	}
 	
 	@Test
-	public void validacionDecoradorSistemaAccesos() {
+	public void validacionEntradaEnElRegistro() {
 		
+		this.decoradorSistemaAccesos.entrarAlEdificio(this.tarjeta);
+		ArrayList<String> registroDelSistema = (ArrayList<String>) this.registro.obtener();
+		String registroDelCliente = registroDelSistema.get(0);
+		System.out.println(registroDelCliente + "\n");
+		
+		assertTrue(registroDelCliente.contains(this.tarjeta.getNumero()));
+		assertTrue(registroDelCliente.contains("Entrada"));
+	}
+	
+	
+	@Test
+	public void validacionRegistroDeSalidaDelEdificio() {
+		
+		this.decoradorSistemaAccesos.salirDelEdificio(this.tarjeta);
+		ArrayList<String> registroDelSistema = (ArrayList<String>) this.registro.obtener();
+		String registroDelCliente = registroDelSistema.get(0);
+		System.out.println(registroDelCliente + "\n");
+		
+		assertTrue(registroDelCliente.contains(this.tarjeta.getNumero()));
+		assertTrue(registroDelCliente.contains("Salida"));
 	}
 }
