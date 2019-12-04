@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import restaurante.productos.Producto;
+
 public class Orden {
 
 	private HashMap<String, LineaPedido> orden = new HashMap<>();

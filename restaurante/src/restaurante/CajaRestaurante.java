@@ -1,5 +1,12 @@
 package restaurante;
 
+import restaurante.decoradores.ConQueso;
+import restaurante.decoradores.ConTomate;
+import restaurante.fabricas.SandwichFactory;
+import restaurante.fabricas.SandwichItalianoFactory;
+import restaurante.fabricas.SandwichMexicanoFactory;
+import restaurante.productos.Producto;
+
 public class CajaRestaurante implements Caja {
 	
 	SandwichFactory factoryMexicano = new SandwichMexicanoFactory();

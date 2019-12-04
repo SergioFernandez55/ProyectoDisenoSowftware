@@ -7,6 +7,10 @@ import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 
+import restaurante.decoradores.ConTomate;
+import restaurante.productos.Producto;
+import restaurante.productos.SandwichMexicano;
+
 public class PruebasRestaurante {
 
 	private Caja caja;

@@ -1,5 +1,7 @@
 package restaurante;
 
+import restaurante.productos.Producto;
+
 public class LineaPedido {
 	
 	private Producto producto;
