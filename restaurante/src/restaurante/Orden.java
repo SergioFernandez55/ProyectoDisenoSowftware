@@ -10,12 +10,13 @@ public class Orden {
 
 	private HashMap<String, LineaPedido> orden = new HashMap<>();
 
-	// Este mÃ©todo es utilizado en pruebas y debe ser eliminado.
+	// Este método es utilizado en pruebas y debe ser eliminado.
 	public HashMap<String, LineaPedido> getOrden() {
 		return orden;
 	}
 
-	public LineaPedido getLineaProducto(String key) {
+	// Este método es utilizado en pruebas y debe ser eliminado.
+	public LineaPedido getLineaPedido(String key) {
 		return this.orden.get(key);
 	}
 	
