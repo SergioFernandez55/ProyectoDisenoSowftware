@@ -20,6 +20,9 @@ public class Orden {
 		return this.orden.get(key);
 	}
 	
+	public Orden() {
+	}
+	
 	public void borrar(){
 		this.orden.clear();
 	}
