@@ -10,34 +10,46 @@ public class Orden {
 
 	private HashMap<String, LineaPedido> orden = new HashMap<>();
 
-	// Este método es utilizado en pruebas y debe ser eliminado.
-	public HashMap<String, LineaPedido> getOrden() {
-		return orden;
-	}
-
-	// Este método es utilizado en pruebas y debe ser eliminado.
-	public LineaPedido getLineaPedido(String key) {
-		return this.orden.get(key);
-	}
-	
 	public Orden() {
 	}
-	
-	public void borrar(){
+
+	private Orden(HashMap<String, LineaPedido> orden) {
+		this.orden = orden;
+	}
+
+	public Orden clonar() {
+
+		HashMap<String, LineaPedido> copia = new HashMap<>(this.orden.size());
+
+		for (Map.Entry<String, LineaPedido> entrada : this.orden.entrySet()) {
+
+			LineaPedido lineaOriginal = entrada.getValue();
+			LineaPedido copiaLinea = new LineaPedido(lineaOriginal.getProducto());
+
+			copiaLinea.setCantidad(lineaOriginal.getCantidad());
+			copiaLinea.setDescripcion(lineaOriginal.getDescripcion());
+			copiaLinea.setPrecio(lineaOriginal.getPrecio());
+
+			copia.put(entrada.getKey(), copiaLinea);
+		}
+
+		return new Orden(copia);
+	}
+
+	public void borrar() {
 		this.orden.clear();
 	}
 
-	public Set<String> getKeys(){
-		return this.orden.keySet();
-	}
-	
 	public void addProducto(Producto producto) {
-		
-		if (!producto.esNulo()){
+
+		if (!producto.esNulo()) {
+			
 			if (this.orden.containsKey(producto.getDescripcion())) {
+				
 				LineaPedido linea = this.orden.get(producto.getDescripcion());
 				linea.incrementa();
 				this.orden.put(producto.getDescripcion(), linea);
+				
 			} else {
 				this.orden.put(producto.getDescripcion(), new LineaPedido(producto));
 			}
@@ -66,26 +78,18 @@ public class Orden {
 		return buffer.toString();
 	}
 
-	private Orden(HashMap<String, LineaPedido> orden){
-		this.orden = orden;
+	// Este método es utilizado en pruebas y debe ser eliminado.
+	public HashMap<String, LineaPedido> getOrden() {
+		return orden;
 	}
-	
-	public Orden clonar() {
-		
-		HashMap<String, LineaPedido> copia = new HashMap<>(this.orden.size());
-		
-		for (Map.Entry<String, LineaPedido> entrada : this.orden.entrySet()) {
-			
-			LineaPedido lineaOriginal = entrada.getValue();
-			LineaPedido copiaLinea = new LineaPedido(lineaOriginal.getProducto());
-			
-			copiaLinea.setCantidad(lineaOriginal.getCantidad());
-			copiaLinea.setDescripcion(lineaOriginal.getDescripcion());
-			copiaLinea.setPrecio(lineaOriginal.getPrecio());
-			
-			copia.put(entrada.getKey(), copiaLinea);
-		}
-		
-		return new Orden(copia);
-	}	
+
+	// Este método es utilizado en pruebas y debe ser eliminado.
+	public LineaPedido getLineaPedido(String key) {
+		return this.orden.get(key);
+	}
+
+	// Este método es utilizado en pruebas y debe ser eliminado.
+	public Set<String> getKeys() {
+		return this.orden.keySet();
+	}
 }
