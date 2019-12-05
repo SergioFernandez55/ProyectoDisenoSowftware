@@ -11,4 +11,9 @@ public class SandwichMexicano implements Producto {
 	public double getPrecio(){
 		return 5.0;
 	}
+
+	@Override
+	public boolean esNulo() {
+		return false;
+	}
 }

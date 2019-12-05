@@ -20,4 +20,9 @@ public class ConTomate implements Producto {
 		return this.sandwich.getPrecio() + 0.5;
 	}
 
+	@Override
+	public boolean esNulo() {
+		return false;
+	}
+
 }

@@ -11,4 +11,9 @@ public class SandwichItaliano implements Producto {
 	public double getPrecio(){
 		return 6.0;
 	}
+
+	@Override
+	public boolean esNulo() {
+		return false;
+	}
 }

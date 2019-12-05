@@ -20,4 +20,9 @@ public class ConQueso implements Producto {
 		return this.sandwich.getPrecio() + 0.75;
 	}
 
+	@Override
+	public boolean esNulo() {
+		return false;
+	}
+
 }
