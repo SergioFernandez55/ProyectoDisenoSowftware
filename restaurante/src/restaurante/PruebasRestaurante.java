@@ -105,7 +105,7 @@ public class PruebasRestaurante {
 		this.caja.addSandwichItaliano();
 		this.caja.confirmarLineaDePedido();
 		
-		String descripcionLineaRespaldo = this.caja.getOrden().getLineaProducto(llave).getDescripcion();
+		String descripcionLineaRespaldo = this.caja.getOrden().getLineaPedido(llave).getDescripcion();
 		
 		assertEquals(linea.getDescripcion(), descripcionLineaRespaldo);
 	}
