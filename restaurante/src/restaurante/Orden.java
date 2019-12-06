@@ -41,16 +41,18 @@ public class Orden {
 	}
 
 	public void addProducto(Producto producto) {
+
 		if (!producto.esNulo()) {
+
 			if (this.elProductoEstaEnLaOrden(producto)) {
+
 				this.incrementarProductosContados(producto);
 			} else {
+
 				this.addProductoAOrden(producto);
 			}
 		}
 	}
-
-	
 
 	public double getPrecioTotal() {
 
@@ -59,7 +61,6 @@ public class Orden {
 		for (LineaPedido linea : this.orden.values()) {
 			precioTotalOrden += linea.getPrecio();
 		}
-
 		return precioTotalOrden;
 	}
 
@@ -68,14 +69,15 @@ public class Orden {
 		StringBuffer buffer = new StringBuffer();
 
 		for (LineaPedido linea : this.orden.values()) {
+
 			buffer.append("\tDescripcion: " + linea.getDescripcion() + " | Cantidad: " + linea.getCantidad()
 					+ " | Precio: " + linea.getPrecio() + "\n");
 		}
 		return buffer.toString();
 	}
-	
+
 	// Métodos auxiliares privados.
-	
+
 	private void incrementarProductosContados(Producto producto) {
 
 		LineaPedido linea = this.orden.get(producto.getDescripcion());
