@@ -24,7 +24,7 @@ public class PruebasRestaurante {
 	}
 
 	@Test
-	public void validarCalculoDelPrecio() {
+	public void calcularPrecio() {
 
 		this.caja.addNuevaLineaDePedido();
 		this.caja.addSandwichItaliano();
@@ -63,7 +63,7 @@ public class PruebasRestaurante {
 	}
 
 	@Test
-	public void validarCancelarUltimaLineaDePedido() {
+	public void cancelarUltimaLineaDePedido() {
 
 		this.caja.addNuevaLineaDePedido();
 		this.caja.addSandwichItaliano();
@@ -91,7 +91,7 @@ public class PruebasRestaurante {
 	}
 	
 	@Test
-	public void validarCreaEstadoMemento() {
+	public void crearEstadoMemento() {
 	
 		String llave = "Mexicano Basico + Tomate Adicional";
 		
