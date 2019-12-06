@@ -41,20 +41,16 @@ public class Orden {
 	}
 
 	public void addProducto(Producto producto) {
-
 		if (!producto.esNulo()) {
-			
-			if (this.orden.containsKey(producto.getDescripcion())) {
-				
-				LineaPedido linea = this.orden.get(producto.getDescripcion());
-				linea.incrementa();
-				this.orden.put(producto.getDescripcion(), linea);
-				
+			if (this.elProductoEstaEnLaOrden(producto)) {
+				this.incrementarProductosContados(producto);
 			} else {
-				this.orden.put(producto.getDescripcion(), new LineaPedido(producto));
+				this.addProductoAOrden(producto);
 			}
 		}
 	}
+
+	
 
 	public double getPrecioTotal() {
 
@@ -76,6 +72,27 @@ public class Orden {
 					+ " | Precio: " + linea.getPrecio() + "\n");
 		}
 		return buffer.toString();
+	}
+	
+	// Métodos auxiliares privados.
+	
+	private void incrementarProductosContados(Producto producto) {
+
+		LineaPedido linea = this.orden.get(producto.getDescripcion());
+		linea.incrementa();
+		this.orden.put(producto.getDescripcion(), linea);
+	}
+
+	private boolean elProductoEstaEnLaOrden(Producto producto) {
+
+		if (this.orden.containsKey(producto.getDescripcion())) {
+			return true;
+		}
+		return false;
+	}
+
+	private void addProductoAOrden(Producto producto) {
+		this.orden.put(producto.getDescripcion(), new LineaPedido(producto));
 	}
 
 	// Este método es utilizado en pruebas y debe ser eliminado.
