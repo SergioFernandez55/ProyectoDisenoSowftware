@@ -112,4 +112,9 @@ public class Orden {
 	public Set<String> getKeys() {
 		return this.orden.keySet();
 	}
+	
+	// Este método es utilizado en pruebas y debe ser eliminado.
+	public boolean estaVacia(){
+		return this.orden.isEmpty();
+	}
 }

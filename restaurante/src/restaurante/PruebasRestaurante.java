@@ -109,5 +109,20 @@ public class PruebasRestaurante {
 		
 		assertEquals(linea.getDescripcion(), descripcionLineaRespaldo);
 	}
-
+	
+	@Test
+	public void cancelarOrdenDeUnSandwich(){
+		
+		this.caja.addNuevaLineaDePedido();
+		this.caja.addSandwichItaliano();
+		this.caja.addQuesoExtra();
+		this.caja.confirmarLineaDePedido();
+		
+		Orden orden = this.caja.getOrden();
+		assertTrue(!orden.estaVacia());
+		
+		this.caja.cancelarUltimaLineaDePedido();
+		orden = this.caja.getOrden();
+		assertTrue(orden.estaVacia());
+	}
 }

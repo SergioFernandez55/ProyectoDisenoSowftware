@@ -9,8 +9,8 @@ import restaurante.productos.Producto;
 
 public class CajaRestaurante implements Caja {
 	
-	SandwichFactory factoryMexicano = new SandwichMexicanoFactory();
-	SandwichFactory factoryItaliano = new SandwichItalianoFactory();
+	private SandwichFactory factoryMexicano = new SandwichMexicanoFactory();
+	private SandwichFactory factoryItaliano = new SandwichItalianoFactory();
 	
 	private Orden orden = new Orden();
 	private Memento respaldo = null;
@@ -42,8 +42,6 @@ public class CajaRestaurante implements Caja {
 
 	@Override
 	public void addNuevaLineaDePedido() {
-		
-		//this.respaldo = this.creaEstado();
 		this.producto = null;
 	}
 
