@@ -13,33 +13,6 @@ public class Orden {
 	public Orden() {
 	}
 
-	private Orden(HashMap<String, LineaPedido> orden) {
-		this.orden = orden;
-	}
-
-	public Orden clonar() {
-
-		HashMap<String, LineaPedido> copia = new HashMap<>(this.orden.size());
-
-		for (Map.Entry<String, LineaPedido> entrada : this.orden.entrySet()) {
-
-			LineaPedido lineaOriginal = entrada.getValue();
-			LineaPedido copiaLinea = new LineaPedido(lineaOriginal.getProducto());
-
-			copiaLinea.setCantidad(lineaOriginal.getCantidad());
-			copiaLinea.setDescripcion(lineaOriginal.getDescripcion());
-			copiaLinea.setPrecio(lineaOriginal.getPrecio());
-
-			copia.put(entrada.getKey(), copiaLinea);
-		}
-
-		return new Orden(copia);
-	}
-
-	public void borrar() {
-		this.orden.clear();
-	}
-
 	public void addProducto(Producto producto) {
 
 		if (!producto.esNulo()) {
@@ -74,6 +47,34 @@ public class Orden {
 					+ " | Precio: " + linea.getPrecio() + "\n");
 		}
 		return buffer.toString();
+	}
+	
+	public void borrar() {
+		this.orden.clear();
+	}
+	
+	// Constructor parametrizado. Utilizado en el método clonar.
+	private Orden(HashMap<String, LineaPedido> orden) {
+		this.orden = orden;
+	}
+
+	public Orden clonar() {
+
+		HashMap<String, LineaPedido> copia = new HashMap<>(this.orden.size());
+
+		for (Map.Entry<String, LineaPedido> entrada : this.orden.entrySet()) {
+
+			LineaPedido lineaOriginal = entrada.getValue();
+			LineaPedido copiaLinea = new LineaPedido(lineaOriginal.getProducto());
+
+			copiaLinea.setCantidad(lineaOriginal.getCantidad());
+			copiaLinea.setDescripcion(lineaOriginal.getDescripcion());
+			copiaLinea.setPrecio(lineaOriginal.getPrecio());
+
+			copia.put(entrada.getKey(), copiaLinea);
+		}
+
+		return new Orden(copia);
 	}
 
 	// Métodos auxiliares privados.
