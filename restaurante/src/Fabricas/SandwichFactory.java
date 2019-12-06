@@ -1,6 +1,6 @@
-package restaurante.fabricas;
+package Fabricas;
 
-import restaurante.productos.Producto;
+import Productos.Producto;
 
 public abstract class SandwichFactory {
 	

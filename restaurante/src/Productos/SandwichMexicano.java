@@ -1,15 +1,15 @@
-package restaurante.productos;
+package Productos;
 
-public class SandwichItaliano implements Producto {
+public class SandwichMexicano implements Producto {
 
 	@Override
 	public String getDescripcion() {
-		return "Italiano Basico";
+		return "Mexicano Basico";
 	}
-
+	
 	@Override
 	public double getPrecio(){
-		return 6.0;
+		return 5.0;
 	}
 
 	@Override

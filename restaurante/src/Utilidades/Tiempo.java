@@ -1,4 +1,4 @@
-package restaurante;
+package Utilidades;
 
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;

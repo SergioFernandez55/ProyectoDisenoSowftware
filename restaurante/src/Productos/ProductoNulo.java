@@ -1,4 +1,4 @@
-package restaurante.productos;
+package Productos;
 
 public class ProductoNulo implements Producto {
 

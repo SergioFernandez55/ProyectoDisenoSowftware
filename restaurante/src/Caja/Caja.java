@@ -1,4 +1,4 @@
-package restaurante;
+package Caja;
 
 public interface Caja {
 

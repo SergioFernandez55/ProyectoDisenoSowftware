@@ -1,4 +1,4 @@
-package restaurante.productos;
+package Productos;
 
 public interface Producto {
 	String getDescripcion();

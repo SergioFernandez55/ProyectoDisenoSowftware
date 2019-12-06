@@ -1,6 +1,6 @@
-package restaurante.decoradores;
+package Decoradores;
 
-import restaurante.productos.Producto;
+import Productos.Producto;
 
 public class ConTomate implements Producto {
 

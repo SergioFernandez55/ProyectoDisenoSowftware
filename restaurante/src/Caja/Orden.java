@@ -1,10 +1,10 @@
-package restaurante;
+package Caja;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import restaurante.productos.Producto;
+import Productos.Producto;
 
 public class Orden {
 

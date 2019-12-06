@@ -1,6 +1,6 @@
-package restaurante;
+package Caja;
 
-import restaurante.productos.Producto;
+import Productos.Producto;
 
 public class LineaPedido {
 	

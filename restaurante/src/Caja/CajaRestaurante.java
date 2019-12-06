@@ -1,11 +1,11 @@
-package restaurante;
+package Caja;
 
-import restaurante.decoradores.ConQueso;
-import restaurante.decoradores.ConTomate;
-import restaurante.fabricas.SandwichFactory;
-import restaurante.fabricas.SandwichItalianoFactory;
-import restaurante.fabricas.SandwichMexicanoFactory;
-import restaurante.productos.Producto;
+import Decoradores.ConQueso;
+import Decoradores.ConTomate;
+import Fabricas.SandwichFactory;
+import Fabricas.SandwichItalianoFactory;
+import Fabricas.SandwichMexicanoFactory;
+import Productos.Producto;
 
 public class CajaRestaurante implements Caja {
 	

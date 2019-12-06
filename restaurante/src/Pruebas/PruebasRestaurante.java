@@ -1,4 +1,4 @@
-package restaurante.Pruebas;
+package Pruebas;
 
 import static org.junit.Assert.*;
 
@@ -7,14 +7,14 @@ import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 
-import restaurante.Caja;
-import restaurante.CajaRestaurante;
-import restaurante.Facturador;
-import restaurante.LineaPedido;
-import restaurante.Orden;
-import restaurante.decoradores.ConTomate;
-import restaurante.productos.Producto;
-import restaurante.productos.SandwichMexicano;
+import Caja.Caja;
+import Caja.CajaRestaurante;
+import Caja.Facturador;
+import Caja.LineaPedido;
+import Caja.Orden;
+import Decoradores.ConTomate;
+import Productos.Producto;
+import Productos.SandwichMexicano;
 
 public class PruebasRestaurante {
 

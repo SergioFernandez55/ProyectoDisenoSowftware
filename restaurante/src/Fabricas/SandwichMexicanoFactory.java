@@ -1,7 +1,7 @@
-package restaurante.fabricas;
+package Fabricas;
 
-import restaurante.productos.Producto;
-import restaurante.productos.SandwichMexicano;
+import Productos.Producto;
+import Productos.SandwichMexicano;
 
 public class SandwichMexicanoFactory extends SandwichFactory{
 

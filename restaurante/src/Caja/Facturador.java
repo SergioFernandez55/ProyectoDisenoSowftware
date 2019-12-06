@@ -1,4 +1,6 @@
-package restaurante;
+package Caja;
+
+import Utilidades.Tiempo;
 
 public class Facturador {
 	
