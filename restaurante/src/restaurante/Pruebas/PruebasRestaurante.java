@@ -1,4 +1,4 @@
-package restaurante;
+package restaurante.Pruebas;
 
 import static org.junit.Assert.*;
 
@@ -7,6 +7,11 @@ import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 
+import restaurante.Caja;
+import restaurante.CajaRestaurante;
+import restaurante.Facturador;
+import restaurante.LineaPedido;
+import restaurante.Orden;
 import restaurante.decoradores.ConTomate;
 import restaurante.productos.Producto;
 import restaurante.productos.SandwichMexicano;
