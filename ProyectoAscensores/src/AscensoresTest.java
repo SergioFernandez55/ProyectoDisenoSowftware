@@ -5,7 +5,7 @@ import org.junit.Test;
 public class AscensoresTest {
 	Ascensor ascensor;
 	DespachadorDePiso despachador;
-	Ascensor ascensor1, ascensor2, ascensor3;
+	Ascensor carga1, carga2, carga3, personas1, personas2, personas3;
 	
 	//Test crear ascensores
 	@Before
@@ -22,25 +22,53 @@ public class AscensoresTest {
 		despachador = new DespachadorDePiso(10, 2, 4);
 
 
-			ascensor1 = new Ascensor.Builder()
+			carga1 = new Ascensor.Builder()
 					.setMaxPasajeros(3)
 					.setPisoActual(2)
 					.setDireccion("quieto")
 					.setID(1)
+					.setTipoCarga()
 					.build();
 			
-			ascensor2 = new Ascensor.Builder()
+			carga2 = new Ascensor.Builder()
 					.setMaxPasajeros(3)
 					.setPisoActual(5)
 					.setDireccion("quieto")
 					.setID(2)
+					.setTipoCarga()
 					.build();
 			
-			ascensor3 = new Ascensor.Builder()
+			carga3 = new Ascensor.Builder()
 					.setMaxPasajeros(3)
 					.setPisoActual(7)
 					.setDireccion("quieto")
 					.setID(3)
+					.setTipoCarga()
+					.build();
+			
+			
+			personas1 = new Ascensor.Builder()
+					.setMaxPasajeros(3)
+					.setPisoActual(2)
+					.setDireccion("quieto")
+					.setID(1)
+					.setTipoPersona()
+					.build();
+			
+			personas2 = new Ascensor.Builder()
+					.setMaxPasajeros(3)
+					.setPisoActual(5)
+					.setDireccion("quieto")
+					.setID(2)
+					.setTipoPersona()
+					.build();
+			
+			personas3 = new Ascensor.Builder()
+					.setMaxPasajeros(3)
+					.setPisoActual(7)
+					.setDireccion("quieto")
+					.setID(2)
+					.setTipoPersona()
 					.build();
 		
 	}
@@ -48,9 +76,9 @@ public class AscensoresTest {
 	@Test
 	public void testAgregarAscensores() {
 		
-		despachador.addAscensor(ascensor1);
-		despachador.addAscensor(ascensor2);
-		despachador.addAscensor(ascensor3);
+		despachador.addAscensor(carga1);
+		despachador.addAscensor(carga2);
+		despachador.addAscensor(carga3);
 				
 		assertEquals((despachador.getListaAscensores().get(0).getIdentificador()),1);
 		assertEquals((despachador.getListaAscensores().get(1).getIdentificador()),2);
@@ -60,22 +88,21 @@ public class AscensoresTest {
 	
 	@Test
 	public void llamarAscensorCarga() {
-		despachador.addAscensor(ascensor1);
-		despachador.addAscensor(ascensor2);
-		despachador.addAscensor(ascensor3);
 		
-		assertEquals(despachador.llamarAscensor(3, 9, TipoAscensor.CARGA), 0);
+		despachador.addAscensor(carga1);
+		despachador.addAscensor(carga2);
+		despachador.addAscensor(carga3);
+		
+		assertEquals(despachador.llamarAscensor(3, 9, TipoAscensor.CARGA), 3);
 	}
 	
 	@Test
 	public void llamarAscensorPersonas() {
-		despachador.addAscensor(ascensor1);
-		despachador.addAscensor(ascensor2);
-		despachador.addAscensor(ascensor3);
 		
-		despachador.llamarAscensor(9, 3, TipoAscensor.PASAJEROS);
-		assertEquals(despachador.llamarAscensor(9, 3, TipoAscensor.PASAJEROS), 0);
+		despachador.addAscensor(personas1);
+		despachador.addAscensor(personas2);
+		despachador.addAscensor(personas3);
+	
+		assertEquals(despachador.llamarAscensor(9, 3, TipoAscensor.PASAJEROS), 1);
 	}
 }
-
-
