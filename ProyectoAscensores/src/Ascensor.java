@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.*;
 import java.util.Vector;
 import java.util.HashMap;
+
+
 public class Ascensor {
 	private int identificador;
 	private String direccionActual = "quieto";

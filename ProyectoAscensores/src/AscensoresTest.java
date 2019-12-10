@@ -2,7 +2,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-class AscensoresTest {
+public class AscensoresTest {
 	Ascensor ascensor;
 	DespachadorDePiso despachador;
 	Ascensor ascensor1, ascensor2, ascensor3;
@@ -47,6 +47,7 @@ class AscensoresTest {
 	
 	@Test
 	public void testAgregarAscensores() {
+		
 		despachador.addAscensor(ascensor1);
 		despachador.addAscensor(ascensor2);
 		despachador.addAscensor(ascensor3);
