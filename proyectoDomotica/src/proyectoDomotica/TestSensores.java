@@ -4,63 +4,51 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class TestSensores {
-
+	MediadorDispositivosInteligentes mediador;
+	Actuador lampara;
+	Actuador aire;
+	Actuador aspersor;
+	Sensor movimiento;
+	Sensor temperatura;
+	Sensor humo;
+	
+	@Before
+	public void init() {
+		this.mediador = new MediadorDispositivosInteligentes();
+		
+		this.lampara  = new ActuadorLampara(mediador);
+		this.aire = new ActuadorAireAcondicionado(mediador);
+		this.aspersor = new ActuadorAspersores(mediador);
+		
+		this.movimiento = new SensorMovimiento(mediador);
+		this.temperatura = new SensorTemperatura(mediador);
+		this.humo = new SensorHumo(mediador);
+	}
+	
 	@Test
-	public void test() {
-		//Test sensor-actuador actuador-actuador 
-		/*MediadorDispositivosInteligentes mediador = new MediadorDispositivosInteligentes();
-		
-		Actuador lampara  = new ActuadorLampara(mediador);
-		Actuador aire = new ActuadorAireAcondicionado(mediador);
-		Actuador aspersor = new ActuadorAspersores(mediador);
-		
-		Sensor movimiento = new SensorMovimiento(mediador);
-		Sensor temperatura = new SensorTemperatura(mediador);
-		Sensor humo = new SensorHumo(mediador);
-		
-		mediador.agregaComportamiento(movimiento, lampara, true);
-		mediador.agregaComportamiento(movimiento, aspersor, true);
-		mediador.agregaComportamiento(temperatura, aire, true);
-		mediador.agregaComportamiento(humo, aspersor, true);
-		mediador.agregaComportamiento(humo, aire, false);
-		mediador.agregaComportamiento(lampara, aire, true);
-		
-
-		mediador.llamarComportamiento(movimiento);
-		mediador.llamarComportamiento(humo);
-		assertEquals(aire.estaActivo() ,false);
-		*/
-		//Test
-		
-		
-		MediadorDispositivosInteligentes mediador = new MediadorDispositivosInteligentes();
-		
-		Actuador lampara  = new ActuadorLampara(mediador);
-		Actuador aire = new ActuadorAireAcondicionado(mediador);
-		Actuador aspersor = new ActuadorAspersores(mediador);
-		
-		Sensor movimiento = new SensorMovimiento(mediador);
-		Sensor temperatura = new SensorTemperatura(mediador);
-		Sensor humo = new SensorHumo(mediador);
-		
-		
-		
+	public void testBefore(){
 		mediador.agregaComportamiento(temperatura, aire, true);
 		
 		//Test Before de Sensor y Actuador
 		assertEquals(movimiento.estaActivo() ,false);
 		assertEquals(aire.estaActivo() ,false);
-
+	}
+	
+	@Test
+	public void testActivarActuador() {
 		//Test Sensor activa actuador
-		
 		mediador.agregaComportamiento(movimiento, lampara, true);
 		
 		movimiento.activaDispositivo();
 		assertEquals(lampara.estaActivo(),true);
-		
+	}
+	
+	@Test
+	public void testAccionesEnCadena(){
 		//Test acciones en cadena
 		
 		mediador.agregaComportamiento(temperatura, aire, true);
@@ -70,8 +58,10 @@ public class TestSensores {
 		temperatura.activaDispositivo();
 		assertEquals(aspersor.estaActivo(),true);
 		assertEquals(lampara.estaActivo(),false);
-		
-		
+	}
+	
+	@Test
+	public void testDesactivarDispositivos() {
 		//Test Desactivar dispositivos
 		lampara.desactivaDispositivo();
 		aire.desactivaDispositivo();
