@@ -60,7 +60,21 @@ public class AscensoresTest {
 	
 	@Test
 	public void llamarAscensorCarga() {
+		despachador.addAscensor(ascensor1);
+		despachador.addAscensor(ascensor2);
+		despachador.addAscensor(ascensor3);
+		
 		assertEquals(despachador.llamarAscensor(3, 9, TipoAscensor.CARGA), 0);
+	}
+	
+	@Test
+	public void llamarAscensorPersonas() {
+		despachador.addAscensor(ascensor1);
+		despachador.addAscensor(ascensor2);
+		despachador.addAscensor(ascensor3);
+		
+		despachador.llamarAscensor(9, 3, TipoAscensor.PASAJEROS);
+		assertEquals(despachador.llamarAscensor(9, 3, TipoAscensor.PASAJEROS), 0);
 	}
 }
 
