@@ -1,24 +1,26 @@
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
 
 class AscensoresTest {
-
+	Ascensor ascensor;
+	DespachadorDePiso despachador;
+	Ascensor ascensor1, ascensor2, ascensor3;
+	
 	//Test crear ascensores
-	@Test
-	void test() {
-		Ascensor ascensor;
+	@Before
+	public void init() {
 
 		ascensor = new Ascensor.Builder()
 				.setPisoActual(1)
 				.setDireccion("quieto")
 				.build();
 		
-		assertEquals(ascensor.getPisoActual(),1);
+		//assertEquals(ascensor.getPisoActual(),1);
 	
 		
-		DespachadorDePiso despachador = new DespachadorDePiso(10, 2, 4);
-		Ascensor ascensor1, ascensor2, ascensor3;
+		despachador = new DespachadorDePiso(10, 2, 4);
+
 
 			ascensor1 = new Ascensor.Builder()
 					.setMaxPasajeros(3)
@@ -40,17 +42,24 @@ class AscensoresTest {
 					.setDireccion("quieto")
 					.setID(3)
 					.build();
-			despachador.addAscensor(ascensor1);
-			despachador.addAscensor(ascensor2);
-			despachador.addAscensor(ascensor3);
 		
-					
+	}
+	
+	@Test
+	public void testAgregarAscensores() {
+		despachador.addAscensor(ascensor1);
+		despachador.addAscensor(ascensor2);
+		despachador.addAscensor(ascensor3);
+				
 		assertEquals((despachador.getListaAscensores().get(0).getIdentificador()),1);
 		assertEquals((despachador.getListaAscensores().get(1).getIdentificador()),2);
 		assertEquals((despachador.getListaAscensores().get(2).getIdentificador()),3);
 
+	}
+	
+	@Test
+	public void llamarAscensorCarga() {
 		assertEquals(despachador.llamarAscensor(3, 9, TipoAscensor.CARGA), 0);
-		
 	}
 }
 

@@ -33,14 +33,12 @@ public class TestSensores {
 	public void testBefore(){
 		mediador.agregaComportamiento(temperatura, aire, true);
 		
-		//Test Before de Sensor y Actuador
 		assertEquals(movimiento.estaActivo() ,false);
 		assertEquals(aire.estaActivo() ,false);
 	}
 	
 	@Test
 	public void testActivarActuador() {
-		//Test Sensor activa actuador
 		mediador.agregaComportamiento(movimiento, lampara, true);
 		
 		movimiento.activaDispositivo();
@@ -49,7 +47,6 @@ public class TestSensores {
 	
 	@Test
 	public void testAccionesEnCadena(){
-		//Test acciones en cadena
 		
 		mediador.agregaComportamiento(temperatura, aire, true);
 		mediador.agregaComportamiento(aire, aspersor, true);
@@ -62,7 +59,6 @@ public class TestSensores {
 	
 	@Test
 	public void testDesactivarDispositivos() {
-		//Test Desactivar dispositivos
 		lampara.desactivaDispositivo();
 		aire.desactivaDispositivo();
 		aspersor.desactivaDispositivo();
